@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEST — редизайн и сопровождение сайта под ключ</title>
+<meta name="description" content="TEST — сервисная компания полного цикла: аудит, разработка решения, реализация и сопровождение под ключ. Работаем по договору, без скрытых доплат. Звоните: 8 (123) 456-78-90.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;500;600;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#121316;
+  --bg-soft:#181a1e;
+  --panel:#1c1e23;
+  --line:rgba(255,255,255,0.09);
+  --text:#eef0eb;
+  --muted:#a6a9ad;
+  --accent:#c8ff3d;
+  --accent-dim:#8fbf2b;
+  --danger:#ff6a4d;
+  --radius:18px;
+  --maxw:1160px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'IBM Plex Mono',monospace;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.logo{font-family:'Tektur',sans-serif;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+.wrap{position:relative;}
+
+/* ---------- utility ---------- */
+.mono-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.78rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.mono-label::before{
+  content:"";
+  width:8px;height:8px;
+  background:var(--accent);
+  display:inline-block;
+  border-radius:1px;
+}
+.section{padding:110px 0;position:relative;}
+.section-head{margin-bottom:56px;max-width:640px;}
+.section-head h2{font-size:clamp(1.9rem,3.5vw,3rem);font-weight:600;line-height:1.15;margin-top:14px;}
+.section-head p{color:var(--muted);margin-top:16px;font-size:1.02rem;max-width:52ch;}
+.hairline{height:1px;background:var(--line);width:100%;}
+.ghost-num{
+  position:absolute;
+  font-family:'Tektur',sans-serif;
+  font-weight:900;
+  font-size:clamp(6rem,20vw,16rem);
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,0.07);
+  line-height:1;
+  z-index:0;
+  pointer-events:none;
+  user-select:none;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:17px 34px;
+  border-radius:12px;
+  font-family:'Tektur',sans-serif;
+  font-weight:600;
+  font-size:1.02rem;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  white-space:nowrap;
+}
+.btn-primary{
+  background:var(--accent);
+  color:#101207;
+  box-shadow:0 0 0 0 rgba(200,255,61,0.4);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -6px rgba(200,255,61,0.45);}
+.btn-outline{
+  border-color:var(--line);
+  color:var(--text);
+  background:transparent;
+}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;
+  z-index:100;
+  background:rgba(18,19,22,0.72);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 22px;
+  max-width:var(--maxw);margin:0 auto;
+}
+.logo{
+  font-size:1.5rem;font-weight:900;letter-spacing:0.03em;
+  white-space:nowrap;
+  display:flex;align-items:baseline;gap:6px;
+}
+.logo span{color:var(--accent);}
+.nav-links{
+  display:flex;gap:30px;
+  list-style:none;
+  font-size:0.86rem;
+  letter-spacing:0.03em;
+  text-transform:uppercase;
+}
+.nav-links a{color:var(--muted);transition:color .2s;position:relative;}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{display:flex;align-items:center;gap:18px;}
+.nav-phone{font-family:'Tektur',sans-serif;font-weight:600;font-size:0.98rem;white-space:nowrap;}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+.burger span{width:24px;height:2px;background:var(--text);}
+@media (max-width:900px){
+  .nav-links{display:none;}
+  .nav-phone{display:none;}
+  .burger{display:flex;}
+}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:92vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  padding-top:110px;
+  overflow:hidden;
+}
+.hero-bg-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent 90%);
+  z-index:0;
+}
+.hero-glow{
+  position:absolute;
+  width:640px;height:640px;
+  background:radial-gradient(circle, rgba(200,255,61,0.16), transparent 70%);
+  top:-220px;right:-160px;
+  z-index:0;
+  filter:blur(10px);
+}
+.hero-content{position:relative;z-index:2;max-width:820px;}
+.hero h1{
+  font-size:clamp(2.6rem,6.5vw,5.2rem);
+  line-height:1.05;
+  font-weight:700;
+  margin:22px 0 24px;
+}
+.hero h1 em{
+  color:var(--accent);
+  font-style:normal;
+}
+.hero p.sub{
+  font-size:clamp(1.05rem,1.3vw,1.25rem);
+  color:var(--muted);
+  max-width:60ch;
+  margin-bottom:38px;
+}
+.hero-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.hero-phone{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Tektur',sans-serif;
+  font-size:1.15rem;font-weight:600;
+}
+.hero-phone svg{width:20px;height:20px;stroke:var(--accent);}
+.hero-ticker{
+  margin-top:70px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:16px 0;
+  overflow:hidden;
+  position:relative;
+  z-index:2;
+}
+.ticker-track{
+  display:flex;
+  white-space:nowrap;
+  gap:50px;
+  animation:ticker 26s linear infinite;
+}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.ticker-track span{
+  font-size:0.85rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:flex;align-items:center;gap:14px;
+}
+.ticker-track span::before{content:"◆";color:var(--accent);font-size:0.6rem;}
+
+/* ---------- pain ---------- */
+.pain{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:20px;}
+.pain-item{
+  background:var(--bg);
+  padding:34px 30px;
+  display:flex;gap:18px;
+  align-items:flex-start;
+}
+.pain-item svg{flex-shrink:0;width:26px;height:26px;stroke:var(--danger);margin-top:2px;}
+.pain-item p{color:var(--text);font-size:1rem;}
+.pain-item small{display:block;color:var(--muted);font-size:0.85rem;margin-top:6px;}
+@media (max-width:760px){.pain-grid{grid-template-columns:1fr;}}
+
+/* ---------- services ---------- */
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative;z-index:1;}
+.service-card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:32px 26px;
+  position:relative;
+  transition:transform .3s ease, border-color .3s ease, background .3s ease;
+}
+.service-card::before{
+  content:"";
+  position:absolute;top:0;left:0;
+  width:22px;height:22px;
+  border-top:2px solid var(--accent);
+  border-left:2px solid var(--accent);
+  border-radius:6px 0 0 0;
+  opacity:0;
+  transition:opacity .3s;
+}
+.service-card:hover{transform:translateY(-6px);border-color:rgba(200,255,61,0.4);background:#20232a;}
+.service-card:hover::before{opacity:1;}
+.service-num{font-family:'Tektur',sans-serif;font-size:2rem;color:rgba(255,255,255,0.18);font-weight:700;}
+.service-card h3{font-size:1.15rem;margin:16px 0 10px;font-family:'Tektur',sans-serif;font-weight:600;}
+.service-card p{color:var(--muted);font-size:0.92rem;}
+@media (max-width:980px){.services-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:560px){.services-grid{grid-template-columns:1fr;}}
+
+/* ---------- why ---------- */
+.why{position:relative;background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;position:relative;z-index:1;}
+.why-item{background:var(--bg);padding:44px 26px;text-align:left;}
+.why-num{
+  font-family:'Tektur',sans-serif;
+  font-size:clamp(2.4rem,4vw,3.4rem);
+  font-weight:700;color:var(--accent);
+  display:flex;align-items:baseline;gap:4px;
+}
+.why-item p{color:var(--muted);margin-top:10px;font-size:0.92rem;}
+@media (max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* ---------- process ---------- */
+.process-list{position:relative;z-index:1;margin-top:20px;}
+.process-item{
+  display:grid;
+  grid-template-columns:90px 1fr;
+  gap:26px;
+  padding:34px 0;
+  border-top:1px solid var(--line);
+  align-items:start;
+}
+.process-item:last-child{border-bottom:1px solid var(--line);}
+.process-step{
+  font-family:'Tektur',sans-serif;
+  font-size:2.2rem;
+  font-weight:700;
+  color:rgba(255,255,255,0.14);
+}
+.process-item h3{font-size:1.2rem;margin-bottom:8px;font-family:'Tektur',sans-serif;font-weight:600;}
+.process-item p{color:var(--muted);font-size:0.95rem;max-width:60ch;}
+@media (max-width:600px){.process-item{grid-template-columns:56px 1fr;}.process-step{font-size:1.6rem;}}
+
+/* ---------- reviews ---------- */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative;z-index:1;}
+.review-card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:30px 26px;
+  display:flex;flex-direction:column;gap:18px;
+}
+.review-quote{color:var(--text);font-size:0.98rem;line-height:1.7;}
+.review-quote::before{content:"“";color:var(--accent);font-size:1.4rem;}
+.review-foot{display:flex;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:16px;}
+.review-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg, rgba(200,255,61,0.35), rgba(200,255,61,0.05));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Tektur',sans-serif;font-weight:700;color:var(--accent);font-size:0.9rem;
+}
+.review-name{font-size:0.9rem;font-weight:600;}
+.review-role{font-size:0.78rem;color:var(--muted);}
+@media (max-width:900px){.reviews-grid{grid-template-columns:1fr;}}
+
+/* ---------- about ---------- */
+.about{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;overflow:hidden;}
+.about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;position:relative;z-index:1;}
+.about-text p{color:var(--muted);margin-top:16px;font-size:1rem;max-width:56ch;}
+.acronym{display:flex;flex-direction:column;gap:16px;}
+.acr-row{display:flex;align-items:center;gap:18px;border-bottom:1px solid var(--line);padding-bottom:14px;}
+.acr-letter{
+  font-family:'Tektur',sans-serif;font-size:2.4rem;font-weight:900;color:var(--accent);
+  width:52px;
+}
+.acr-text{font-size:0.98rem;}
+.acr-text b{display:block;font-family:'Tektur',sans-serif;font-weight:600;font-size:1.02rem;}
+@media (max-width:900px){.about-grid{grid-template-columns:1fr;gap:36px;}}
+
+/* ---------- faq ---------- */
+.faq-list{position:relative;z-index:1;margin-top:10px;}
+.faq-item{border-top:1px solid var(--line);}
+.faq-item:last-child{border-bottom:1px solid var(--line);}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:26px 4px;
+  cursor:pointer;
+  font-family:'Tektur',sans-serif;
+  font-size:1.05rem;
+  font-weight:500;
+  gap:20px;
+}
+.faq-q svg{flex-shrink:0;width:20px;height:20px;stroke:var(--accent);transition:transform .3s;}
+.faq-item.open .faq-q svg{transform:rotate(45deg);}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .35s ease, padding .35s ease;
+  color:var(--muted);
+  font-size:0.95rem;
+  padding:0 4px;
+}
+.faq-item.open .faq-a{max-height:240px;padding-bottom:24px;}
+
+/* ---------- final cta ---------- */
+.final-cta{
+  position:relative;
+  text-align:center;
+  padding:130px 0;
+  overflow:hidden;
+}
+.final-cta .ghost-num{left:50%;top:50%;transform:translate(-50%,-50%);}
+.final-cta h2{font-size:clamp(2rem,4.5vw,3.4rem);position:relative;z-index:1;max-width:760px;margin:0 auto 22px;line-height:1.15;}
+.final-cta p{color:var(--muted);position:relative;z-index:1;margin-bottom:36px;}
+.final-actions{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;position:relative;z-index:1;}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:60px 0 110px;}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;}
+.foot-logo{font-family:'Tektur',sans-serif;font-size:1.5rem;font-weight:900;white-space:nowrap;}
+.foot-logo span{color:var(--accent);}
+.foot-col h4{font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.foot-col p, .foot-col a{display:block;color:var(--text);font-size:0.92rem;margin-bottom:8px;}
+.foot-bottom{margin-top:50px;border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;color:var(--muted);font-size:0.82rem;flex-wrap:wrap;gap:10px;}
+@media (max-width:760px){.foot-grid{grid-template-columns:1fr;gap:30px;}}
+
+/* ---------- mobile call button ---------- */
+.mobile-call{
+  display:none;
+  position:fixed;
+  bottom:0;left:0;right:0;
+  z-index:200;
+  background:var(--accent);
+  color:#101207;
+  text-align:center;
+  padding:16px 0;
+  font-family:'Tektur',sans-serif;
+  font-weight:700;
+  font-size:1rem;
+  letter-spacing:0.02em;
+}
+@media (max-width:760px){
+  .mobile-call{display:block;}
+  body{padding-bottom:56px;}
+}
+
+/* ---------- counter ---------- */
+.count{font-family:'Tektur',sans-serif;}
+
+/* general responsive section spacing */
+@media (max-width:760px){
+  .section{padding:80px 0;}
+  .hero-ticker{margin-top:44px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#top" class="logo">TE<span>ST</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#process">Процесс</a></li>
+      <li><a href="#why">Почему мы</a></li>
+      <li><a href="#reviews">Отзывы</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:81234567890">8 (123) 456-78-90</a>
+      <a class="btn btn-primary" href="#cta">Позвонить</a>
+      <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="hero-content">
+        <span class="mono-label">[ Работа под ключ · сопровождение ]</span>
+        <h1 class="reveal">Результат, который <em>выдержит проверку</em> на практике</h1>
+        <p class="sub reveal">TEST берёт задачу целиком: от аудита и решения до реализации и поддержки. Договор фиксирует объём и сроки, поэтому в процессе не появляется сюрпризов.</p>
+        <div class="hero-actions reveal">
+          <a class="btn btn-primary" href="#cta">Обсудить задачу</a>
+          <a class="hero-phone" href="tel:81234567890">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.79.65 2.65a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.43-1.42a2 2 0 0 1 2.11-.45c.86.31 1.75.53 2.65.65A2 2 0 0 1 22 16.92z"/></svg>
+            8 (123) 456-78-90
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-ticker">
+      <div class="ticker-track">
+        <span>Аудит и диагностика</span><span>Разработка решения</span><span>Реализация под ключ</span><span>Сопровождение</span><span>Работа по договору</span>
+        <span>Аудит и диагностика</span><span>Разработка решения</span><span>Реализация под ключ</span><span>Сопровождение</span><span>Работа по договору</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN -->
+  <section class="pain">
+    <div class="container">
+      <span class="mono-label reveal">[ 01 · Знакомая ситуация ]</span>
+      <h2 class="reveal" style="font-size:clamp(1.9rem,3.5vw,3rem);margin-top:14px;max-width:640px;">Если задачу уже пытались решить и результат не устроил</h2>
+      <div class="pain-grid">
+        <div class="pain-item reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+          <div>
+            <p>Договорились на словах, а по факту сроки поплыли</p>
+            <small>Нет фиксации этапов — нет и точки, к которой можно вернуться</small>
+          </div>
+        </div>
+        <div class="pain-item reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+          <div>
+            <p>Исполнитель пропадает после получения оплаты</p>
+            <small>Связь есть до перевода, потом — тишина</small>
+          </div>
+        </div>
+        <div class="pain-item reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+          <div>
+            <p>Итог не совпадает с тем, что обсуждали на старте</p>
+            <small>Задача была понята по-своему, без сверки на этапах</small>
+          </div>
+        </div>
+        <div class="pain-item reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+          <div>
+            <p>Контролировать процесс приходится самостоятельно</p>
+            <small>Вместо того, чтобы контроль взял на себя исполнитель</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services" style="position:relative;">
+    <div class="ghost-num" style="top:0;right:-40px;">02</div>
+    <div class="container">
+      <div class="section-head">
+        <span class="mono-label reveal">[ 02 · Направления работы ]</span>
+        <h2 class="reveal">Берём задачу на любом этапе — от идеи до поддержки</h2>
+        <p class="reveal">Каждое направление можно заказать отдельно или собрать в один цикл — под конкретную задачу, без лишних действий.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-num">01</div>
+          <h3>Аудит и диагностика</h3>
+          <p>Разбираем текущую ситуацию, находим слабые места и фиксируем, что именно нужно менять и в каком порядке.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">02</div>
+          <h3>Разработка решения</h3>
+          <p>Собираем план: объём работ, сроки, ответственность на каждом шаге. Всё — в договоре, а не на словах.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">03</div>
+          <h3>Реализация под ключ</h3>
+          <p>Выполняем работу с промежуточными сверками, чтобы результат не расходился с тем, что обсуждали на старте.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">04</div>
+          <h3>Сопровождение</h3>
+          <p>После сдачи остаёмся на связи: правки, донастройка и поддержка результата в рабочем состоянии.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="section-head">
+        <span class="mono-label reveal">[ 03 · Почему обращаются к нам ]</span>
+        <h2 class="reveal">Работаем так, чтобы за процесс не приходилось переживать</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal">
+          <div class="why-num"><span class="count" data-target="14">0</span><span>дн.</span></div>
+          <p>ориентировочный срок от заявки до старта работ</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num"><span class="count" data-target="100">0</span><span>%</span></div>
+          <p>задач фиксируются в договоре до начала работы</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num"><span class="count" data-target="3">0</span><span>этапа</span></div>
+          <p>сверки результата с клиентом по ходу процесса</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num"><span class="count" data-target="0">0</span></div>
+          <p>скрытых доплат сверх согласованной суммы</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section" id="process" style="position:relative;">
+    <div class="ghost-num" style="top:20px;left:-30px;">04</div>
+    <div class="container">
+      <div class="section-head">
+        <span class="mono-label reveal">[ 04 · Как проходит работа ]</span>
+        <h2 class="reveal">Пять шагов от заявки до сдачи результата</h2>
+      </div>
+      <div class="process-list">
+        <div class="process-item reveal">
+          <div class="process-step">01</div>
+          <div><h3>Заявка и разговор о задаче</h3><p>Звоните или оставляете заявку — уточняем контекст, сроки и то, что важно именно вам.</p></div>
+        </div>
+        <div class="process-item reveal">
+          <div class="process-step">02</div>
+          <div><h3>Аудит и расчёт</h3><p>Смотрим на текущую ситуацию, оцениваем объём и считаем стоимость без округлений «на глаз».</p></div>
+        </div>
+        <div class="process-item reveal">
+          <div class="process-step">03</div>
+          <div><h3>Согласование плана</h3><p>Фиксируем этапы, сроки и результат каждого этапа в договоре — до начала оплаты.</p></div>
+        </div>
+        <div class="process-item reveal">
+          <div class="process-step">04</div>
+          <div><h3>Реализация со сверками</h3><p>Показываем промежуточный результат на контрольных точках, а не только в самом конце.</p></div>
+        </div>
+        <div class="process-item reveal">
+          <div class="process-step">05</div>
+          <div><h3>Сдача и поддержка</h3><p>Передаём результат, объясняем детали и остаёмся на связи по сопровождению.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <div class="section-head">
+        <span class="mono-label reveal">[ 05 · Отзывы ]</span>
+        <h2 class="reveal">Что говорят о работе с TEST</h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <p class="review-quote">Обратились по рекомендации. Сроки, которые назвали на старте, не сдвинулись — это было главным условием с нашей стороны.</p>
+          <div class="review-foot">
+            <div class="review-avatar">ВБ</div>
+            <div><div class="review-name">Владелец бизнеса</div><div class="review-role">Постоянный клиент</div></div>
+          </div>
+        </div>
+        <div class="review-card reveal">
+          <p class="review-quote">Понравилось, что план и стоимость зафиксировали в договоре до старта. Никаких доплат в процессе не возникло.</p>
+          <div class="review-foot">
+            <div class="review-avatar">РО</div>
+            <div><div class="review-name">Руководитель отдела</div><div class="review-role">Обратились по задаче под ключ</div></div>
+          </div>
+        </div>
+        <div class="review-card reveal">
+          <p class="review-quote">На каждом этапе показывали промежуточный результат — можно было вносить правки, не дожидаясь финала.</p>
+          <div class="review-foot">
+            <div class="review-avatar">ДК</div>
+            <div><div class="review-name">Директор компании</div><div class="review-role">Задача с сопровождением</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="mono-label reveal">[ 06 · О компании ]</span>
+          <h2 class="reveal" style="font-size:clamp(1.9rem,3.5vw,3rem);margin-top:14px;">TEST — это не просто название</h2>
+          <p class="reveal">Работаем по принципу: обещание должно проходить проверку на практике. Берём задачу под ключ, фиксируем условия в договоре и держим связь на всех этапах — до сдачи и после неё.</p>
+          <p class="reveal">Заявки принимаем по телефону и обрабатываем в порядке очереди, без затягивания первого контакта.</p>
+        </div>
+        <div class="acronym reveal">
+          <div class="acr-row"><div class="acr-letter">T</div><div class="acr-text"><b>Точность</b>договорённостей и сроков без размытых формулировок</div></div>
+          <div class="acr-row"><div class="acr-letter">E</div><div class="acr-text"><b>Эффективность</b>решения, а не процесс ради процесса</div></div>
+          <div class="acr-row"><div class="acr-letter">S</div><div class="acr-text"><b>Скорость</b>реакции на заявки и промежуточные вопросы</div></div>
+          <div class="acr-row"><div class="acr-letter">T</div><div class="acr-text"><b>Технологичность</b>подхода на каждом этапе работы</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" style="position:relative;">
+    <div class="ghost-num" style="bottom:0;right:-30px;">07</div>
+    <div class="container">
+      <div class="section-head">
+        <span class="mono-label reveal">[ 07 · Вопросы ]</span>
+        <h2 class="reveal">Отвечаем на то, что спрашивают чаще всего</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <div class="faq-q">Сколько времени занимает работа?<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="faq-a">Срок зависит от объёма задачи. Ориентировочные сроки называем после аудита и фиксируем их в договоре — до начала оплаты.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">Как формируется стоимость?<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="faq-a">Считаем по объёму работ после разговора и аудита. Итоговая сумма фиксируется заранее и не меняется в процессе без отдельного согласования.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">Что если промежуточный результат не понравится?<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="faq-a">Для этого и нужны сверки на этапах — правки вносятся сразу, а не после сдачи всей работы целиком.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">Нужно ли платить всю сумму сразу?<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="faq-a">Оплата привязана к этапам работы. Условия обсуждаются индивидуально и прописываются в договоре.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">Берёте задачу целиком или только часть?<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="faq-a">И то, и другое. Можно заказать только аудит, а можно — весь цикл до сопровождения после сдачи.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">Как быстро вы отвечаете на заявки?<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="faq-a">Заявки обрабатываются в порядке очереди. Быстрее всего — по телефону, номер указан в шапке и в футере страницы.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="cta">
+    <div class="ghost-num">TEST</div>
+    <div class="container">
+      <span class="mono-label reveal">[ Готовы обсудить задачу ]</span>
+      <h2 class="reveal">Позвоните — и договоримся о сроках, которые не будут плыть</h2>
+      <p class="reveal">Первый разговор ничего не стоит. Расскажите о задаче — предложим план и оценим объём.</p>
+      <div class="final-actions reveal">
+        <a class="btn btn-primary" href="tel:81234567890">Позвонить: 8 (123) 456-78-90</a>
+        <a class="btn btn-outline" href="#services">Смотреть направления</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">TE<span>ST</span></div>
+        <p style="color:var(--muted);margin-top:14px;max-width:34ch;">Берём задачу под ключ: от аудита до сопровождения после сдачи результата.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Контакты</h4>
+        <a href="tel:81234567890">8 (123) 456-78-90</a>
+        <p>Заявки принимаем ежедневно</p>
+      </div>
+      <div class="foot-col">
+        <h4>Навигация</h4>
+        <a href="#services">Услуги</a>
+        <a href="#process">Процесс</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> TEST. Все права защищены.</span>
+      <span>Работаем по договору</span>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:81234567890" class="mobile-call">Позвонить: 8 (123) 456-78-90</a>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// reveal on scroll with stagger
+(function(){
+  var items = document.querySelectorAll('.reveal');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced){
+    items.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var groups = {};
+  items.forEach(function(el){
+    var parent = el.closest('section') || document.body;
+    if(!groups[parent.dataset.gid]) {
+      if(!parent.dataset.gid){ parent.dataset.gid = Math.random().toString(36).slice(2); }
+    }
+  });
+  var counters = {};
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var el = entry.target;
+        var parentKey = el.closest('section') ? el.closest('section').dataset.gid || 'root' : 'root';
+        counters[parentKey] = counters[parentKey] || 0;
+        var delay = counters[parentKey] * 90;
+        counters[parentKey]++;
+        setTimeout(function(){ el.classList.add('in'); }, delay);
+        observer.unobserve(el);
+      }
+    });
+  }, {threshold:0.15});
+  items.forEach(function(el){ observer.observe(el); });
+})();
+
+// counter-up
+(function(){
+  var counts = document.querySelectorAll('.count');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var animated = new WeakSet();
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting && !animated.has(entry.target)){
+        animated.add(entry.target);
+        var el = entry.target;
+        var target = parseInt(el.dataset.target, 10);
+        if(reduced || target === 0){ el.textContent = target; return; }
+        var start = 0;
+        var duration = 1100;
+        var startTime = null;
+        function step(ts){
+          if(!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var val = Math.floor(progress * target);
+          el.textContent = val;
+          if(progress < 1){ requestAnimationFrame(step); } else { el.textContent = target; }
+        }
+        requestAnimationFrame(step);
+      }
+    });
+  }, {threshold:0.4});
+  counts.forEach(function(el){ obs.observe(el); });
+})();
+
+// faq accordion
+document.querySelectorAll('.faq-item').forEach(function(item){
+  var q = item.querySelector('.faq-q');
+  q.addEventListener('click', function(){
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(o){ o.classList.remove('open'); });
+    if(!isOpen){ item.classList.add('open'); }
+  });
+});
+
+// mobile menu (simple toggle showing links as dropdown)
+(function(){
+  var burger = document.querySelector('.burger');
+  var links = document.querySelector('.nav-links');
+  if(!burger) return;
+  burger.addEventListener('click', function(){
+    var open = links.style.display === 'flex';
+    if(open){
+      links.style.display = 'none';
+    } else {
+      links.style.display = 'flex';
+      links.style.position = 'absolute';
+      links.style.top = '68px';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.flexDirection = 'column';
+      links.style.background = 'rgba(18,19,22,0.98)';
+      links.style.padding = '20px 22px';
+      links.style.gap = '18px';
+      links.style.borderBottom = '1px solid var(--line)';
+    }
+  });
+})();
+
+// smooth anchor scroll offset for fixed header
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var id = a.getAttribute('href');
+    if(id.length < 2) return;
+    var target = document.querySelector(id);
+    if(target){
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.scrollY - 84;
+      window.scrollTo({top: top, behavior: 'smooth'});
+      var links = document.querySelector('.nav-links');
+      if(links) links.style.display = '';
+    }
+  });
+});
+</script>
+</body>
+</html>
