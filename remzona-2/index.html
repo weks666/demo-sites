@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ремзона — автосервис в Невском районе СПб, у Дыбенко и Большевиков</title>
+<meta name="description" content="Автосервис «Ремзона» в Невском районе Санкт-Петербурга, рядом с Дыбенко, Большевиков и Дальневосточным проспектом. Диагностика, двигатель, ходовая, шиномонтаж. Свободный доступ в ремзону, без навязанных услуг. Звоните: 8 (812) 490-67-30.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tektur:wght@500;700;900&family=Onest:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#101214;
+  --bg-soft:#161a1d;
+  --bg-card:#1a1e22;
+  --line:rgba(255,255,255,0.09);
+  --text:#eceeef;
+  --muted:#9aa2a8;
+  --accent:#ff5a1f;
+  --accent-2:#ffb020;
+  --radius:2px;
+  --font-head:'Tektur',sans-serif;
+  --font-body:'Onest',sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.15;letter-spacing:0.01em;}
+.mono{font-family:var(--font-mono);}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+.section{position:relative;padding:88px 0;}
+.section-bg-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size:64px 64px;
+  opacity:0.35;
+  pointer-events:none;
+}
+.label{
+  font-family:var(--font-mono);
+  font-size:12.5px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:18px;
+}
+.label::before{content:'';width:22px;height:1px;background:var(--accent);display:inline-block;}
+.hairline{height:1px;background:var(--line);width:100%;}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--font-head);font-weight:700;font-size:15px;
+  letter-spacing:0.02em;text-transform:uppercase;
+  padding:16px 28px;border-radius:var(--radius);
+  border:1px solid transparent;cursor:pointer;
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  white-space:nowrap;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--accent),#ff7a3d);
+  color:#12100e;
+  box-shadow:0 8px 24px rgba(255,90,31,0.28);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,90,31,0.4);}
+.btn-ghost{
+  border-color:var(--line);color:var(--text);background:transparent;
+}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent-2);}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 0;
+  transition:background .3s ease, padding .3s ease, backdrop-filter .3s ease;
+}
+header.scrolled{
+  background:rgba(16,18,20,0.85);
+  backdrop-filter:blur(10px);
+  padding:12px 0;
+  border-bottom:1px solid var(--line);
+}
+.nav-row{display:flex;align-items:center;justify-content:space-between;}
+.logo{
+  font-family:var(--font-head);font-weight:900;font-size:20px;
+  letter-spacing:0.02em;
+  display:flex;flex-direction:column;gap:2px;
+}
+.logo span{
+  font-family:var(--font-mono);font-weight:400;font-size:9px;color:var(--muted);
+  letter-spacing:0.22em;text-transform:uppercase;
+}
+.logo b{color:var(--accent);}
+nav.links{display:none;gap:28px;font-size:14px;}
+nav.links a{color:var(--muted);transition:color .2s;position:relative;}
+nav.links a:hover{color:var(--text);}
+.header-cta{display:none;align-items:center;gap:16px;}
+.phone-top{
+  font-family:var(--font-head);font-weight:700;font-size:16px;color:var(--text);
+}
+.burger{
+  width:32px;height:22px;position:relative;cursor:pointer;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.burger span{display:block;height:2px;background:var(--text);border-radius:2px;}
+
+@media(min-width:900px){
+  nav.links{display:flex;}
+  .header-cta{display:flex;}
+  .burger{display:none;}
+}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;
+  padding:150px 0 100px;
+  overflow:hidden;
+  background:radial-gradient(ellipse 80% 60% at 80% 0%, rgba(255,90,31,0.14), transparent 60%),
+              var(--bg);
+}
+.hero-gear{
+  position:absolute;right:-120px;top:-60px;width:520px;height:520px;
+  opacity:0.10;pointer-events:none;
+}
+.hero-inner{position:relative;z-index:2;max-width:760px;}
+.eyebrow{
+  font-family:var(--font-mono);font-size:13px;color:var(--accent-2);
+  letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;
+  display:inline-block;border:1px solid var(--line);padding:7px 14px;border-radius:2px;
+}
+.hero h1{
+  font-size:38px;
+  margin-bottom:22px;
+  color:#fff;
+}
+.hero h1 em{color:var(--accent);font-style:normal;}
+.hero p.sub{
+  font-size:17px;color:var(--muted);max-width:560px;margin-bottom:34px;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:44px;}
+.hero-points{display:grid;grid-template-columns:1fr;gap:12px;max-width:520px;}
+.hero-point{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--muted);}
+.hero-point svg{flex-shrink:0;margin-top:2px;stroke:var(--accent-2);}
+@media(min-width:640px){
+  .hero h1{font-size:52px;}
+  .hero-points{grid-template-columns:1fr 1fr;}
+}
+@media(min-width:1024px){
+  .hero h1{font-size:60px;}
+}
+
+/* marquee */
+.marquee-wrap{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--bg-soft);
+  overflow:hidden;padding:16px 0;
+}
+.marquee{
+  display:flex;gap:40px;white-space:nowrap;
+  animation:scroll-left 32s linear infinite;
+  width:max-content;
+}
+.marquee span{
+  font-family:var(--font-mono);font-size:13px;color:var(--muted);
+  letter-spacing:0.05em;text-transform:uppercase;
+  display:flex;align-items:center;gap:40px;
+}
+.marquee span::after{content:'/';color:var(--accent);margin-left:40px;}
+@keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ===== PAINS ===== */
+.pains-grid{
+  display:grid;grid-template-columns:1fr;gap:18px;margin-top:40px;
+}
+@media(min-width:760px){.pains-grid{grid-template-columns:1fr 1fr;}}
+.pain-card{
+  border:1px solid var(--line);background:var(--bg-card);
+  padding:26px 24px;border-radius:var(--radius);
+  position:relative;
+}
+.pain-card .num{
+  font-family:var(--font-mono);font-size:12px;color:var(--accent);margin-bottom:12px;display:block;
+}
+.pain-card h3{font-size:18px;margin-bottom:10px;color:#fff;}
+.pain-card p{color:var(--muted);font-size:14.5px;}
+
+.section-head{max-width:640px;margin-bottom:20px;}
+.section-head h2{font-size:30px;color:#fff;}
+@media(min-width:760px){.section-head h2{font-size:38px;}}
+.section-head p{color:var(--muted);font-size:15.5px;margin-top:12px;}
+
+/* ===== SERVICES ===== */
+.services-section{background:var(--bg-soft);}
+.ghost-num{
+  position:absolute;right:0;top:20px;
+  font-family:var(--font-head);font-weight:900;font-size:220px;
+  color:transparent;
+  -webkit-text-stroke:1px var(--line);
+  line-height:1;z-index:0;user-select:none;pointer-events:none;
+}
+.services-grid{
+  display:grid;grid-template-columns:1fr;gap:16px;margin-top:40px;position:relative;z-index:1;
+}
+@media(min-width:700px){.services-grid{grid-template-columns:1fr 1fr;}}
+@media(min-width:1080px){.services-grid{grid-template-columns:1fr 1fr 1fr;}}
+.service-card{
+  border:1px solid var(--line);background:var(--bg-card);
+  padding:26px 22px;position:relative;
+  transition:transform .3s ease, border-color .3s ease, background .3s ease;
+}
+.service-card::before,.service-card::after{
+  content:'';position:absolute;width:14px;height:14px;
+  border:1px solid var(--accent);opacity:0;transition:opacity .3s;
+}
+.service-card::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+.service-card::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+.service-card:hover{transform:translateY(-4px);border-color:rgba(255,90,31,0.4);}
+.service-card:hover::before,.service-card:hover::after{opacity:1;}
+.service-card .tag{
+  font-family:var(--font-mono);font-size:11.5px;color:var(--muted);
+  letter-spacing:0.1em;margin-bottom:16px;display:block;
+}
+.service-card h3{font-size:19px;margin-bottom:14px;color:#fff;}
+.service-card ul{list-style:none;font-size:14px;color:var(--muted);}
+.service-card ul li{padding:6px 0;border-top:1px solid var(--line);}
+.service-card ul li:first-child{border-top:none;}
+
+/* ===== ADVANTAGES ===== */
+.adv-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:40px;
+  background:var(--line);border:1px solid var(--line);
+}
+@media(min-width:760px){.adv-grid{grid-template-columns:1fr 1fr 1fr 1fr;}}
+.adv-item{
+  background:var(--bg);padding:32px 22px;text-align:left;
+}
+.adv-item .count{
+  font-family:var(--font-head);font-weight:900;font-size:44px;color:var(--accent);
+  display:flex;align-items:baseline;gap:4px;
+}
+.adv-item .count span{font-size:20px;color:var(--accent-2);}
+.adv-item p{color:var(--muted);font-size:13.5px;margin-top:10px;}
+
+.why-list{
+  display:grid;grid-template-columns:1fr;gap:16px;margin-top:44px;
+}
+@media(min-width:760px){.why-list{grid-template-columns:1fr 1fr;}}
+.why-item{
+  display:flex;gap:16px;padding:20px 0;border-top:1px solid var(--line);
+}
+.why-item svg{flex-shrink:0;stroke:var(--accent-2);}
+.why-item h4{font-size:16.5px;color:#fff;margin-bottom:6px;}
+.why-item p{font-size:14px;color:var(--muted);}
+
+/* ===== PROCESS ===== */
+.process-section{background:var(--bg-soft);}
+.process-list{margin-top:44px;position:relative;}
+.process-step{
+  display:grid;grid-template-columns:70px 1fr;gap:20px;
+  padding:26px 0;border-top:1px solid var(--line);
+  position:relative;
+}
+.process-step:first-child{border-top:none;}
+.process-step .step-num{
+  font-family:var(--font-head);font-weight:900;font-size:34px;color:var(--accent);opacity:0.8;
+}
+.process-step h3{font-size:18px;color:#fff;margin-bottom:8px;}
+.process-step p{font-size:14.5px;color:var(--muted);max-width:600px;}
+
+/* ===== REVIEWS ===== */
+.reviews-grid{
+  display:grid;grid-template-columns:1fr;gap:18px;margin-top:40px;
+}
+@media(min-width:760px){.reviews-grid{grid-template-columns:1fr 1fr 1fr;}}
+.review-card{
+  border:1px solid var(--line);background:var(--bg-card);padding:26px 22px;
+  display:flex;flex-direction:column;gap:16px;
+}
+.review-quote{color:var(--text);font-size:14.5px;line-height:1.7;}
+.review-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:14px;}
+.review-name{font-family:var(--font-head);font-size:14px;color:#fff;}
+.review-car{font-family:var(--font-mono);font-size:12px;color:var(--muted);}
+.stars{display:flex;gap:3px;}
+.stars svg{width:14px;height:14px;fill:var(--accent-2);stroke:none;}
+
+/* ===== ABOUT ===== */
+.about-grid{
+  display:grid;grid-template-columns:1fr;gap:40px;margin-top:40px;align-items:start;
+}
+@media(min-width:900px){.about-grid{grid-template-columns:1.1fr 0.9fr;}}
+.about-text p{color:var(--muted);font-size:15.5px;margin-bottom:16px;}
+.about-visual{
+  border:1px solid var(--line);background:var(--bg-card);padding:30px;position:relative;min-height:280px;
+  display:flex;flex-direction:column;justify-content:center;gap:18px;
+}
+.about-map-line{display:flex;gap:12px;align-items:center;font-size:14px;color:var(--muted);}
+.about-map-line svg{stroke:var(--accent);flex-shrink:0;}
+.about-map-line b{color:var(--text);font-weight:600;}
+
+/* ===== FAQ ===== */
+.faq-section{background:var(--bg-soft);}
+.faq-list{margin-top:40px;}
+.faq-item{border-top:1px solid var(--line);}
+.faq-item:last-child{border-bottom:1px solid var(--line);}
+.faq-q{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:22px 4px;cursor:pointer;font-family:var(--font-head);font-size:16.5px;color:#fff;
+  gap:20px;
+}
+.faq-q .plus{
+  flex-shrink:0;width:22px;height:22px;position:relative;
+}
+.faq-q .plus::before,.faq-q .plus::after{
+  content:'';position:absolute;background:var(--accent);transition:transform .3s ease;
+}
+.faq-q .plus::before{width:100%;height:2px;top:50%;left:0;transform:translateY(-50%);}
+.faq-q .plus::after{width:2px;height:100%;left:50%;top:0;transform:translateX(-50%);}
+.faq-item.open .plus::after{transform:translateX(-50%) rotate(90deg);opacity:0;}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height .35s ease;
+}
+.faq-a p{padding:0 4px 22px;color:var(--muted);font-size:14.5px;max-width:680px;}
+
+/* ===== FINAL CTA ===== */
+.final-cta{
+  position:relative;padding:100px 0;text-align:center;overflow:hidden;
+  background:radial-gradient(ellipse 70% 90% at 50% 0%, rgba(255,90,31,0.16), transparent 65%), var(--bg);
+}
+.final-cta h2{font-size:32px;color:#fff;margin-bottom:16px;}
+.final-cta p{color:var(--muted);font-size:16px;margin-bottom:36px;max-width:520px;margin-inline:auto;}
+.final-actions{display:flex;flex-direction:column;align-items:center;gap:16px;}
+.final-phone{font-family:var(--font-head);font-size:30px;color:var(--accent-2);font-weight:700;}
+@media(min-width:640px){.final-cta h2{font-size:42px;}.final-phone{font-size:38px;}}
+
+/* ===== FOOTER ===== */
+footer{
+  border-top:1px solid var(--line);padding:56px 0 100px;background:var(--bg);
+}
+.footer-grid{
+  display:grid;grid-template-columns:1fr;gap:32px;
+}
+@media(min-width:760px){.footer-grid{grid-template-columns:1.3fr 1fr 1fr;}}
+.footer-col h4{font-family:var(--font-mono);font-size:12px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;}
+.footer-col p, .footer-col a{font-size:14.5px;color:var(--text);display:block;margin-bottom:10px;}
+.footer-col a:hover{color:var(--accent-2);}
+.footer-bottom{
+  margin-top:50px;padding-top:24px;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--muted);
+}
+@media(min-width:760px){.footer-bottom{flex-direction:row;justify-content:space-between;}}
+
+/* sticky call button mobile */
+.sticky-call{
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:linear-gradient(135deg,var(--accent),#ff7a3d);
+  color:#14110d;text-align:center;padding:16px 0;
+  font-family:var(--font-head);font-weight:700;font-size:16px;letter-spacing:0.02em;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  box-shadow:0 -6px 24px rgba(0,0,0,0.4);
+}
+@media(min-width:900px){.sticky-call{display:none;}}
+body{padding-bottom:66px;}
+@media(min-width:900px){body{padding-bottom:0;}}
+
+/* reveal animations */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none;}
+  .marquee{animation:none;}
+  html{scroll-behavior:auto;}
+}
+
+/* mobile nav panel */
+.mobile-nav{
+  position:fixed;inset:0;background:rgba(10,11,12,0.98);z-index:150;
+  display:flex;flex-direction:column;justify-content:center;gap:24px;padding:40px;
+  transform:translateX(100%);transition:transform .35s ease;
+}
+.mobile-nav.open{transform:translateX(0);}
+.mobile-nav a{font-family:var(--font-head);font-size:26px;color:#fff;}
+.mobile-nav .btn{margin-top:20px;align-self:flex-start;}
+.mobile-nav-close{position:absolute;top:24px;right:24px;font-size:30px;color:var(--muted);cursor:pointer;}
+
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap nav-row">
+    <a class="logo" href="#top"><b>РЕМ</b>ЗОНА<span>Автосервис · Невский район</span></a>
+    <nav class="links">
+      <a href="#services">Услуги</a>
+      <a href="#why">Почему мы</a>
+      <a href="#process">Как это работает</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <div class="header-cta">
+      <a class="phone-top" href="tel:88124906730">8 (812) 490-67-30</a>
+      <a class="btn btn-primary" href="tel:88124906730">Позвонить</a>
+    </div>
+    <div class="burger" id="burgerBtn"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-close" id="mobileClose">×</div>
+  <a href="#services">Услуги</a>
+  <a href="#why">Почему мы</a>
+  <a href="#process">Как это работает</a>
+  <a href="#reviews">Отзывы</a>
+  <a href="#faq">Вопросы</a>
+  <a class="btn btn-primary" href="tel:88124906730">Позвонить: 8 (812) 490-67-30</a>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="hero-gear" viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="60" stroke="#ff5a1f" stroke-width="1.5"/>
+      <circle cx="100" cy="100" r="30" stroke="#ff5a1f" stroke-width="1.5"/>
+      <g stroke="#ff5a1f" stroke-width="1.5">
+        <line x1="100" y1="20" x2="100" y2="40"/>
+        <line x1="100" y1="160" x2="100" y2="180"/>
+        <line x1="20" y1="100" x2="40" y2="100"/>
+        <line x1="160" y1="100" x2="180" y2="100"/>
+        <line x1="43" y1="43" x2="57" y2="57"/>
+        <line x1="143" y1="143" x2="157" y2="157"/>
+        <line x1="43" y1="157" x2="57" y2="143"/>
+        <line x1="143" y1="57" x2="157" y2="43"/>
+      </g>
+    </svg>
+    <div class="wrap hero-inner">
+      <span class="eyebrow">Невский район · Дыбенко / Большевиков / Дальневосточный пр.</span>
+      <h1>Ремонт авто, где <em>видно</em> каждый шаг</h1>
+      <p class="sub">Свободный доступ в ремзону — вы наблюдаете за работой мастера сами. Не навязываем доп.услуги и не накручиваем чек. Диагностика, двигатель, ходовая, шиномонтаж — на одной площадке.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:88124906730">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          8 (812) 490-67-30
+        </a>
+        <a class="btn btn-ghost" href="#services">Смотреть услуги</a>
+      </div>
+      <div class="hero-points">
+        <div class="hero-point">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>
+          Открытая ремзона — доступ клиента к машине во время работы
+        </div>
+        <div class="hero-point">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>
+          Без навязанных допов — озвучиваем только то, что реально нужно
+        </div>
+        <div class="hero-point">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>
+          Иномарки и отечественные — своя база запчастей
+        </div>
+        <div class="hero-point">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>
+          Рядом с метро Дыбенко, Большевиков, Дальневосточный пр-т
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap">
+    <div class="marquee">
+      <span>Диагностика<span>Двигатель</span><span>Ходовая</span><span>Развал-схождение</span><span>Шиномонтаж</span><span>Турбины</span><span>Инжектор</span><span>Автозвук</span><span>Кондиционеры</span></span>
+      <span>Диагностика<span>Двигатель</span><span>Ходовая</span><span>Развал-схождение</span><span>Шиномонтаж</span><span>Турбины</span><span>Инжектор</span><span>Автозвук</span><span>Кондиционеры</span></span>
+    </div>
+  </div>
+
+  <!-- PAINS -->
+  <section class="section" id="pains">
+    <div class="wrap">
+      <div class="label">[01] С ЧЕМ ВЫ ОБЫЧНО СТАЛКИВАЕТЕСЬ</div>
+      <div class="section-head">
+        <h2 class="reveal">Знакомая история с автосервисами</h2>
+        <p class="reveal">Прежде чем звонить нам, вы, скорее всего, уже это проходили.</p>
+      </div>
+      <div class="pains-grid">
+        <div class="pain-card reveal">
+          <span class="num mono">01</span>
+          <h3>Машину закатывают в бокс — и всё</h3>
+          <p>Что там делают, сколько времени займёт и почему в итоге счёт вырос втрое — узнаёте только по факту.</p>
+        </div>
+        <div class="pain-card reveal">
+          <span class="num mono">02</span>
+          <h3>«Заодно посмотрели» — и вписали в чек</h3>
+          <p>Диагностика находит десяток «проблем», о которых вы не просили и о цене которых не спрашивали.</p>
+        </div>
+        <div class="pain-card reveal">
+          <span class="num mono">03</span>
+          <h3>Непонятно, кому доверить турбину или рейку</h3>
+          <p>Сложный ремонт — редко у кого есть опыт с турбинами, инжекторами и рулевыми рейками одновременно.</p>
+        </div>
+        <div class="pain-card reveal">
+          <span class="num mono">04</span>
+          <h3>Далеко ехать через весь город</h3>
+          <p>Хочется сервис рядом с домом — в Невском районе, а не через полгорода на другой конец СПб.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section services-section" id="services">
+    <div class="section-bg-grid"></div>
+    <div class="ghost-num">22</div>
+    <div class="wrap" style="position:relative;">
+      <div class="label">[02] УСЛУГИ</div>
+      <div class="section-head">
+        <h2 class="reveal">22 направления в одной ремзоне</h2>
+        <p class="reveal">От компьютерной диагностики до сварочных работ — не нужно возить машину по трём точкам.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <span class="tag">01 / ЭЛЕКТРИКА</span>
+          <h3>Диагностика и электрика</h3>
+          <ul>
+            <li>Компьютерная диагностика</li>
+            <li>Ремонт электронных систем авто</li>
+            <li>Ремонт стартеров и генераторов</li>
+            <li>Установка автосигнализаций</li>
+            <li>Аккумуляторы — подбор и замена</li>
+          </ul>
+        </div>
+
+        <div class="service-card reveal">
+          <span class="tag">02 / ДВИГАТЕЛЬ</span>
+          <h3>Двигатель и топливо</h3>
+          <ul>
+            <li>Ремонт бензиновых двигателей</li>
+            <li>Ремонт инжекторов</li>
+            <li>Ремонт турбин</li>
+            <li>Ремонт выхлопных систем</li>
+          </ul>
+        </div>
+
+        <div class="service-card reveal">
+          <span class="tag">03 / ХОДОВАЯ</span>
+          <h3>Ходовая часть и кузов</h3>
+          <ul>
+            <li>Развал-схождение</li>
+            <li>Ремонт ходовой части</li>
+            <li>Ремонт рулевых реек</li>
+            <li>Сварочные работы</li>
+          </ul>
+        </div>
+
+        <div class="service-card reveal">
+          <span class="tag">04 / СЕЗОН</span>
+          <h3>Шины и обслуживание</h3>
+          <ul>
+            <li>Шиномонтаж</li>
+            <li>Замена масла</li>
+            <li>Автохимия</li>
+          </ul>
+        </div>
+
+        <div class="service-card reveal">
+          <span class="tag">05 / КОМФОРТ</span>
+          <h3>Комфорт и звук</h3>
+          <ul>
+            <li>Обслуживание климатических систем</li>
+            <li>Автозвук</li>
+            <li>Автоаксессуары</li>
+          </ul>
+        </div>
+
+        <div class="service-card reveal">
+          <span class="tag">06 / ЗАПЧАСТИ</span>
+          <h3>Запчасти на месте</h3>
+          <ul>
+            <li>Запчасти для иномарок</li>
+            <li>Запчасти для отечественных авто</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY / ADVANTAGES -->
+  <section class="section" id="why">
+    <div class="wrap">
+      <div class="label">[03] ПОЧЕМУ РЕМЗОНА</div>
+      <div class="section-head">
+        <h2 class="reveal">Прозрачность вместо обещаний</h2>
+        <p class="reveal">Мы не говорим «индивидуальный подход» — вот что это значит на практике.</p>
+      </div>
+
+      <div class="adv-grid">
+        <div class="adv-item reveal">
+          <div class="count"><span data-count="22">0</span></div>
+          <p>направления работ на одной площадке — от диагностики до сварки</p>
+        </div>
+        <div class="adv-item reveal">
+          <div class="count"><span data-count="3">0</span></div>
+          <p>ориентира рядом: метро Дыбенко, Большевиков, Дальневосточный пр-т</p>
+        </div>
+        <div class="adv-item reveal">
+          <div class="count"><span data-count="0">0</span></div>
+          <p>навязанных допуслуг — говорим только о том, что реально нужно машине</p>
+        </div>
+        <div class="adv-item reveal">
+          <div class="count"><span data-count="100">0</span><span>%</span></div>
+          <p>доступа в ремзону — весь процесс ремонта проходит у вас на глазах</p>
+        </div>
+      </div>
+
+      <div class="why-list">
+        <div class="why-item reveal">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          <div><h4>Открытый бокс</h4><p>Можете стоять рядом с подъёмником и видеть, что именно делает мастер с вашей машиной.</p></div>
+        </div>
+        <div class="why-item reveal">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <div><h4>Без «нашли ещё проблему»</h4><p>Диагностика — это отчёт, а не список для допродаж. О любых доп.работах спрашиваем до, не после.</p></div>
+        </div>
+        <div class="why-item reveal">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <div><h4>Свои запчасти в наличии</h4><p>Запчасти для иномарок и отечественных авто — без ожидания заказа на неделю.</p></div>
+        </div>
+        <div class="why-item reveal">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 2v20M2 12h20"/></svg>
+          <div><h4>Сложный ремонт — тоже к нам</h4><p>Турбины, инжекторы, рулевые рейки — работы, за которые берутся не в каждом сервисе.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section process-section" id="process">
+    <div class="section-bg-grid"></div>
+    <div class="wrap" style="position:relative;">
+      <div class="label">[04] КАК ПРОХОДИТ РЕМОНТ</div>
+      <div class="section-head">
+        <h2 class="reveal">Понятный процесс без сюрпризов</h2>
+      </div>
+      <div class="process-list">
+        <div class="process-step reveal">
+          <div class="step-num mono">01</div>
+          <div><h3>Звонок и запись</h3><p>Описываете проблему по телефону — сразу говорим, что нужно проверить и сколько это может занять.</p></div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num mono">02</div>
+          <div><h3>Диагностика при вас</h3><p>Машина на подъёмнике — вы рядом. Мастер показывает и объясняет, что видит, без технического жаргона.</p></div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num mono">03</div>
+          <div><h3>Согласование работ</h3><p>Называем перечень и стоимость до начала ремонта. Если находим что-то ещё — сообщаем и спрашиваем, а не делаем молча.</p></div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num mono">04</div>
+          <div><h3>Ремонт в открытой зоне</h3><p>Пока автомобиль в ремзоне, вы можете находиться рядом и наблюдать за ходом работы — доступ не закрыт.</p></div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num mono">05</div>
+          <div><h3>Выдача и пояснение</h3><p>Показываем, что было сделано и что заменено. Никаких «доверьтесь нам» без объяснений.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section" id="reviews">
+    <div class="wrap">
+      <div class="label">[05] ОТЗЫВЫ</div>
+      <div class="section-head">
+        <h2 class="reveal">Что говорят те, кто уже приезжал</h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+          </div>
+          <p class="review-quote">Стоял рядом, пока смотрели ходовую — показали на подъёмнике, что именно стучит. Первый раз не пришлось верить на слово.</p>
+          <div class="review-foot"><span class="review-name">Дмитрий</span><span class="review-car mono">Skoda Octavia</span></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+          </div>
+          <p class="review-quote">Приезжала на диагностику климат-контроля, думала накинут ещё что-нибудь. Сделали только то, о чём договорились по телефону.</p>
+          <div class="review-foot"><span class="review-name">Ирина</span><span class="review-car mono">Hyundai Solaris</span></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+          </div>
+          <p class="review-quote">Искал сервис, который берётся за рулевую рейку, а не отсылает к дилеру. Здесь взялись и объяснили, что именно меняли.</p>
+          <div class="review-foot"><span class="review-name">Алексей</span><span class="review-car mono">Lada Vesta</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="label">[06] О НАС</div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <h2 style="font-size:30px;color:#fff;margin-bottom:20px;">Автосервис в Невском районе, где ремонт делают удобным</h2>
+          <p>«Ремзона» работает в Невском районе Санкт-Петербурга — рядом с метро Дыбенко, Большевиков и Дальневосточным проспектом. Мы собрали в одном месте диагностику, ремонт двигателя, ходовой, электрики и шиномонтаж, чтобы не гонять машину по разным точкам города.</p>
+          <p>Главный принцип — свободный доступ в ремзону. Вы не сдаёте машину «в чёрный ящик»: можете находиться рядом, пока идёт работа, задавать вопросы мастеру и видеть, что происходит с автомобилем на подъёмнике.</p>
+          <p>Мы не навязываем допуслуги. Если диагностика показала что-то дополнительное — сообщаем и обсуждаем, а не вписываем в счёт по умолчанию.</p>
+        </div>
+        <div class="about-visual reveal">
+          <div class="about-map-line">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Невский район, Санкт-Петербург</span>
+          </div>
+          <div class="about-map-line">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M5 11l1.5-5h11L19 11"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/></svg>
+            <span>Рядом: <b>метро Дыбенко</b></span>
+          </div>
+          <div class="about-map-line">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M5 11l1.5-5h11L19 11"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/></svg>
+            <span>Рядом: <b>метро Большевиков</b></span>
+          </div>
+          <div class="about-map-line">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M5 11l1.5-5h11L19 11"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/></svg>
+            <span>Рядом: <b>Дальневосточный пр-т</b></span>
+          </div>
+          <div class="hairline"></div>
+          <a class="btn btn-primary" href="tel:88124906730" style="align-self:flex-start;">Позвонить сейчас</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section" id="faq">
+    <div class="wrap">
+      <div class="label">[07] ВОПРОСЫ</div>
+      <div class="section-head">
+        <h2 class="reveal">Отвечаем заранее</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <div class="faq-q">Можно ли находиться рядом во время ремонта?<span class="plus"></span></div>
+          <div class="faq-a"><p>Да, это принцип работы «Ремзоны» — свободный доступ в зону ремонта. Вы можете стоять рядом с подъёмником и видеть весь процесс.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">Работаете с иномарками и отечественными авто?<span class="plus"></span></div>
+          <div class="faq-a"><p>Да, у нас в наличии запчасти для иномарок и для отечественных автомобилей — не нужно ждать заказ по несколько дней.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">Что если во время диагностики найдёте что-то ещё?<span class="plus"></span></div>
+          <div class="faq-a"><p>Мы сообщаем о находке и называем стоимость до того, как начинаем работу — доп.услуги не добавляются в чек без вашего согласия.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">Берётесь за сложный ремонт — турбины, рейки, инжектор?<span class="plus"></span></div>
+          <div class="faq-a"><p>Да, это отдельные направления нашей работы: ремонт турбин, рулевых реек и инжекторов — вместе с базовыми услугами вроде замены масла и шиномонтажа.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">Как вас найти?<span class="plus"></span></div>
+          <div class="faq-a"><p>Невский район Санкт-Петербурга, рядом с метро Дыбенко, Большевиков и Дальневосточным проспектом. Точный маршрут подскажем по телефону.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">Как записаться на диагностику или ремонт?<span class="plus"></span></div>
+          <div class="faq-a"><p>Достаточно позвонить: <a href="tel:88124906730" style="color:var(--accent-2);">8 (812) 490-67-30</a>. Опишете проблему — предложим удобное время.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="contact">
+    <div class="wrap">
+      <div class="label" style="justify-content:center;">[08] СВЯЗЬ</div>
+      <h2 class="reveal">Позвоните — обсудим ремонт без лишних слов</h2>
+      <p class="reveal">Расскажем, что нужно проверить, и предложим время визита в Невском районе.</p>
+      <div class="final-actions reveal">
+        <a class="final-phone" href="tel:88124906730">8 (812) 490-67-30</a>
+        <a class="btn btn-primary" href="tel:88124906730">Позвонить сейчас</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Ремзона</h4>
+        <p style="color:var(--muted);max-width:340px;">Автосервис в Невском районе Санкт-Петербурга. Свободный доступ в ремзону, без навязанных допуслуг.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="tel:88124906730">8 (812) 490-67-30</a>
+        <p style="color:var(--muted);">Санкт-Петербург, Невский район</p>
+        <p style="color:var(--muted);">Рядом: Дыбенко, Большевиков, Дальневосточный пр-т</p>
+      </div>
+      <div class="footer-col">
+        <h4>Ссылки</h4>
+        <a href="http://auto-nevsky.ru" target="_blank" rel="noopener">auto-nevsky.ru</a>
+        <a href="https://vk.com/autonevsky" target="_blank" rel="noopener">ВКонтакте</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Ремзона. Все права защищены.</span>
+      <span>Санкт-Петербург, Невский район</span>
+    </div>
+  </div>
+</footer>
+
+<a class="sticky-call" href="tel:88124906730">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Позвонить: 8 (812) 490-67-30
+</a>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// header scroll state
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 30) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+});
+
+// mobile nav
+const burger = document.getElementById('burgerBtn');
+const mobileNav = document.getElementById('mobileNav');
+const mobileClose = document.getElementById('mobileClose');
+burger.addEventListener('click', () => mobileNav.classList.add('open'));
+mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+
+// smooth anchor scroll with header offset
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e){
+    const id = this.getAttribute('href');
+    if(id.length < 2) return;
+    const target = document.querySelector(id);
+    if(target){
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({top, behavior: 'smooth'});
+    }
+  });
+});
+
+// reveal on scroll
+const revealEls = document.querySelectorAll('.reveal');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduceMotion && 'IntersectionObserver' in window) {
+  const groups = {};
+  revealEls.forEach(el => {
+    const parent = el.closest('.pains-grid, .services-grid, .adv-grid, .why-list, .process-list, .reviews-grid, .faq-list') || el.parentElement;
+    if(!groups[parent]) groups[parent] = [];
+    groups[parent].push(el);
+  });
+  Object.values(groups).forEach(list => {
+    list.forEach((el, i) => { el.style.transitionDelay = (i * 0.08) + 's'; });
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add('in'));
+}
+
+// counter-up
+const counters = document.querySelectorAll('[data-count]');
+let countersStarted = false;
+function animateCounters(){
+  if (countersStarted) return;
+  countersStarted = true;
+  counters.forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'), 10);
+    const duration = 1200;
+    const start = performance.now();
+    function tick(now){
+      const progress = Math.min((now - start) / duration, 1);
+      const value = Math.floor(progress * target);
+      el.textContent = value;
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(tick);
+  });
+}
+if ('IntersectionObserver' in window) {
+  const advSection = document.querySelector('.adv-grid');
+  if (advSection) {
+    const advObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          advObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    advObserver.observe(advSection);
+  }
+} else {
+  animateCounters();
+}
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(other => {
+      if (other !== item) {
+        other.classList.remove('open');
+        other.querySelector('.faq-a').style.maxHeight = null;
+      }
+    });
+    if (isOpen) {
+      item.classList.remove('open');
+      a.style.maxHeight = null;
+    } else {
+      item.classList.add('open');
+      a.style.maxHeight = a.scrollHeight + 'px';
+    }
+  });
+});
+</script>
+
+</body>
+</html>
