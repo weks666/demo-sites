@@ -3,960 +3,743 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ремзона — автосервис в Невском районе СПб, у Дыбенко и Большевиков</title>
-<meta name="description" content="Автосервис «Ремзона» в Невском районе Санкт-Петербурга, рядом с Дыбенко, Большевиков и Дальневосточным проспектом. Диагностика, двигатель, ходовая, шиномонтаж. Свободный доступ в ремзону, без навязанных услуг. Звоните: 8 (812) 490-67-30.">
+<title>Ремзона - автосервис в Невском районе СПб, у Дыбенко и Большевиков</title>
+<meta name="description" content="Автосервис «Ремзона» в Невском районе Санкт-Петербурга: диагностика, ремонт двигателя и ходовой, шиномонтаж, развал-схождение. Свободный доступ в ремзону, без навязанных услуг. Возле Дыбенко, Большевиков и Дальневосточного проспекта.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tektur:wght@500;700;900&family=Onest:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#101214;
-  --bg-soft:#161a1d;
-  --bg-card:#1a1e22;
+  --bg:#12130f;
+  --bg-2:#191a14;
+  --panel:#1d1f17;
   --line:rgba(255,255,255,0.09);
-  --text:#eceeef;
-  --muted:#9aa2a8;
-  --accent:#ff5a1f;
-  --accent-2:#ffb020;
-  --radius:2px;
-  --font-head:'Tektur',sans-serif;
-  --font-body:'Onest',sans-serif;
-  --font-mono:'IBM Plex Mono',monospace;
+  --text:#eae7dd;
+  --text-dim:#a8a496;
+  --accent:#ff6a1f;
+  --accent-2:#ffb545;
+  --steel:#5b6a63;
+  --danger:#e34b3f;
+  --radius:14px;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
   background:var(--bg);
   color:var(--text);
-  font-family:var(--font-body);
-  font-size:16px;
+  font-family:'Manrope',sans-serif;
   line-height:1.6;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
 }
-img{max-width:100%;display:block;}
+h1,h2,h3,.logo,.nav-cta,.btn{font-family:'Tektur',sans-serif;}
+.mono{font-family:'IBM Plex Mono',monospace;}
 a{color:inherit;text-decoration:none;}
-h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.15;letter-spacing:0.01em;}
-.mono{font-family:var(--font-mono);}
-.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
-.section{position:relative;padding:88px 0;}
-.section-bg-grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size:64px 64px;
-  opacity:0.35;
-  pointer-events:none;
-}
+img{max-width:100%;display:block;}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px;}
+section{position:relative;padding:110px 0;}
+@media(max-width:640px){section{padding:80px 0;}}
+
 .label{
-  font-family:var(--font-mono);
-  font-size:12.5px;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  color:var(--accent);
-  display:flex;align-items:center;gap:10px;
-  margin-bottom:18px;
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent-2);margin-bottom:18px;
 }
-.label::before{content:'';width:22px;height:1px;background:var(--accent);display:inline-block;}
-.hairline{height:1px;background:var(--line);width:100%;}
+.label::before{content:'';width:26px;height:1px;background:var(--accent);display:inline-block;}
+
+h2{font-size:clamp(1.9rem,3.5vw,3rem);line-height:1.12;font-weight:700;color:#fff;}
+.sub{color:var(--text-dim);font-size:1.05rem;max-width:60ch;margin-top:16px;}
+
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  font-family:var(--font-head);font-weight:700;font-size:15px;
-  letter-spacing:0.02em;text-transform:uppercase;
-  padding:16px 28px;border-radius:var(--radius);
-  border:1px solid transparent;cursor:pointer;
-  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  padding:17px 34px;border-radius:10px;font-size:1rem;font-weight:600;
+  border:1px solid transparent;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
   white-space:nowrap;
 }
-.btn-primary{
-  background:linear-gradient(135deg,var(--accent),#ff7a3d);
-  color:#12100e;
-  box-shadow:0 8px 24px rgba(255,90,31,0.28);
-}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,90,31,0.4);}
-.btn-ghost{
-  border-color:var(--line);color:var(--text);background:transparent;
-}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accent-2);}
+.btn-primary{background:var(--accent);color:#171700;box-shadow:0 8px 30px rgba(255,106,31,.28);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(255,106,31,.4);}
+.btn-ghost{border:1px solid var(--line);color:var(--text);}
+.btn-ghost:hover{border-color:var(--accent-2);color:var(--accent-2);}
 
-/* ===== HEADER ===== */
+/* HEADER */
 header{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:16px 0;
-  transition:background .3s ease, padding .3s ease, backdrop-filter .3s ease;
-}
-header.scrolled{
-  background:rgba(16,18,20,0.85);
-  backdrop-filter:blur(10px);
-  padding:12px 0;
+  background:rgba(18,19,15,.72);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
+  transition:padding .3s ease;
 }
-.nav-row{display:flex;align-items:center;justify-content:space-between;}
-.logo{
-  font-family:var(--font-head);font-weight:900;font-size:20px;
-  letter-spacing:0.02em;
-  display:flex;flex-direction:column;gap:2px;
-}
-.logo span{
-  font-family:var(--font-mono);font-weight:400;font-size:9px;color:var(--muted);
-  letter-spacing:0.22em;text-transform:uppercase;
-}
-.logo b{color:var(--accent);}
-nav.links{display:none;gap:28px;font-size:14px;}
-nav.links a{color:var(--muted);transition:color .2s;position:relative;}
-nav.links a:hover{color:var(--text);}
-.header-cta{display:none;align-items:center;gap:16px;}
-.phone-top{
-  font-family:var(--font-head);font-weight:700;font-size:16px;color:var(--text);
-}
-.burger{
-  width:32px;height:22px;position:relative;cursor:pointer;
-  display:flex;flex-direction:column;justify-content:space-between;
-}
-.burger span{display:block;height:2px;background:var(--text);border-radius:2px;}
-
-@media(min-width:900px){
-  nav.links{display:flex;}
-  .header-cta{display:flex;}
-  .burger{display:none;}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+.logo{font-size:1.35rem;font-weight:800;color:#fff;white-space:nowrap;letter-spacing:.01em;}
+.logo span{color:var(--accent);}
+nav ul{display:flex;gap:30px;list-style:none;}
+nav a{font-size:.92rem;color:var(--text-dim);transition:color .2s;}
+nav a:hover{color:var(--accent-2);}
+.head-right{display:flex;align-items:center;gap:22px;}
+.head-phone{font-family:'IBM Plex Mono',monospace;font-size:.95rem;font-weight:500;color:#fff;white-space:nowrap;}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+.burger span{width:24px;height:2px;background:#fff;}
+@media(max-width:900px){
+  nav{display:none;}
+  .head-phone{display:none;}
+  .burger{display:flex;}
 }
 
-/* ===== HERO ===== */
+/* HERO */
 .hero{
-  position:relative;
-  padding:150px 0 100px;
-  overflow:hidden;
-  background:radial-gradient(ellipse 80% 60% at 80% 0%, rgba(255,90,31,0.14), transparent 60%),
-              var(--bg);
+  min-height:90vh;display:flex;align-items:center;
+  padding-top:120px;padding-bottom:60px;
+  position:relative;overflow:hidden;
 }
-.hero-gear{
-  position:absolute;right:-120px;top:-60px;width:520px;height:520px;
-  opacity:0.10;pointer-events:none;
+.hero::before{
+  content:'';position:absolute;top:-20%;right:-10%;width:60%;height:120%;
+  background:radial-gradient(circle,rgba(255,106,31,.16),transparent 65%);
+  filter:blur(10px);pointer-events:none;
 }
-.hero-inner{position:relative;z-index:2;max-width:760px;}
-.eyebrow{
-  font-family:var(--font-mono);font-size:13px;color:var(--accent-2);
-  letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;
-  display:inline-block;border:1px solid var(--line);padding:7px 14px;border-radius:2px;
+.hero-grid{
+  position:absolute;inset:0;opacity:.35;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:52px 52px;
+  mask-image:linear-gradient(to bottom, black, transparent 85%);
 }
+.hero-ghost{
+  position:absolute;right:-4%;bottom:-8%;font-size:min(38vw,420px);
+  font-family:'Tektur',sans-serif;font-weight:900;color:transparent;
+  -webkit-text-stroke:1.5px rgba(255,255,255,.07);
+  line-height:1;pointer-events:none;user-select:none;z-index:0;
+}
+.hero-content{position:relative;z-index:2;max-width:800px;}
 .hero h1{
-  font-size:38px;
+  font-size:clamp(2.6rem,6.5vw,5.2rem);line-height:1.04;font-weight:800;color:#fff;
   margin-bottom:22px;
-  color:#fff;
 }
 .hero h1 em{color:var(--accent);font-style:normal;}
-.hero p.sub{
-  font-size:17px;color:var(--muted);max-width:560px;margin-bottom:34px;
+.hero .sub{font-size:1.15rem;max-width:56ch;color:var(--text-dim);margin-bottom:36px;}
+.hero-actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-bottom:30px;}
+.hero-phone{display:flex;flex-direction:column;font-size:1.05rem;}
+.hero-phone small{color:var(--text-dim);font-size:.8rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;}
+.hero-phone a{font-weight:700;font-family:'Tektur',sans-serif;font-size:1.15rem;color:#fff;}
+.hero-badges{display:flex;gap:14px;flex-wrap:wrap;}
+.hero-badges span{
+  border:1px solid var(--line);padding:9px 16px;border-radius:100px;
+  font-size:.82rem;color:var(--text-dim);display:flex;align-items:center;gap:8px;
 }
-.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:44px;}
-.hero-points{display:grid;grid-template-columns:1fr;gap:12px;max-width:520px;}
-.hero-point{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--muted);}
-.hero-point svg{flex-shrink:0;margin-top:2px;stroke:var(--accent-2);}
-@media(min-width:640px){
-  .hero h1{font-size:52px;}
-  .hero-points{grid-template-columns:1fr 1fr;}
-}
-@media(min-width:1024px){
-  .hero h1{font-size:60px;}
-}
+.hero-badges svg{width:15px;height:15px;stroke:var(--accent-2);}
 
-/* marquee */
-.marquee-wrap{
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  background:var(--bg-soft);
-  overflow:hidden;padding:16px 0;
-}
-.marquee{
-  display:flex;gap:40px;white-space:nowrap;
-  animation:scroll-left 32s linear infinite;
-  width:max-content;
-}
-.marquee span{
-  font-family:var(--font-mono);font-size:13px;color:var(--muted);
-  letter-spacing:0.05em;text-transform:uppercase;
-  display:flex;align-items:center;gap:40px;
-}
-.marquee span::after{content:'/';color:var(--accent);margin-left:40px;}
-@keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+.stagger .reveal:nth-child(1){transition-delay:.05s;}
+.stagger .reveal:nth-child(2){transition-delay:.15s;}
+.stagger .reveal:nth-child(3){transition-delay:.25s;}
+.stagger .reveal:nth-child(4){transition-delay:.35s;}
+.stagger .reveal:nth-child(5){transition-delay:.45s;}
+.stagger .reveal:nth-child(6){transition-delay:.55s;}
 
-/* ===== PAINS ===== */
-.pains-grid{
-  display:grid;grid-template-columns:1fr;gap:18px;margin-top:40px;
-}
-@media(min-width:760px){.pains-grid{grid-template-columns:1fr 1fr;}}
+/* PAIN */
+.pain{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.pain-head{max-width:640px;margin-bottom:56px;}
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+@media(max-width:760px){.pain-grid{grid-template-columns:1fr;}}
 .pain-card{
-  border:1px solid var(--line);background:var(--bg-card);
-  padding:26px 24px;border-radius:var(--radius);
-  position:relative;
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px 28px;position:relative;overflow:hidden;
 }
 .pain-card .num{
-  font-family:var(--font-mono);font-size:12px;color:var(--accent);margin-bottom:12px;display:block;
+  position:absolute;top:-10px;right:8px;font-size:5rem;font-weight:800;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.08);font-family:'Tektur',sans-serif;
 }
-.pain-card h3{font-size:18px;margin-bottom:10px;color:#fff;}
-.pain-card p{color:var(--muted);font-size:14.5px;}
+.pain-card h3{font-size:1.15rem;color:#fff;margin-bottom:10px;font-family:'Manrope',sans-serif;font-weight:700;}
+.pain-card p{color:var(--text-dim);font-size:.95rem;}
+.pain-arrow{display:flex;align-items:center;gap:8px;margin-top:14px;color:var(--accent-2);font-size:.86rem;font-weight:600;}
+.pain-arrow svg{width:16px;height:16px;stroke:var(--accent-2);}
 
-.section-head{max-width:640px;margin-bottom:20px;}
-.section-head h2{font-size:30px;color:#fff;}
-@media(min-width:760px){.section-head h2{font-size:38px;}}
-.section-head p{color:var(--muted);font-size:15.5px;margin-top:12px;}
+/* MARQUEE */
+.marquee-wrap{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:18px 0;overflow:hidden;background:var(--panel);white-space:nowrap;
+}
+.marquee{display:inline-flex;gap:40px;animation:scroll 38s linear infinite;}
+@media(prefers-reduced-motion:reduce){.marquee{animation:none;}}
+.marquee span{
+  font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--text-dim);
+  display:flex;align-items:center;gap:14px;white-space:nowrap;
+}
+.marquee span::before{content:'—';color:var(--accent);}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
-/* ===== SERVICES ===== */
-.services-section{background:var(--bg-soft);}
-.ghost-num{
-  position:absolute;right:0;top:20px;
-  font-family:var(--font-head);font-weight:900;font-size:220px;
-  color:transparent;
-  -webkit-text-stroke:1px var(--line);
-  line-height:1;z-index:0;user-select:none;pointer-events:none;
+/* SERVICES */
+.services{}
+.svc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:50px;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:960px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.svc-grid{grid-template-columns:1fr;}}
+.svc-card{
+  background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 26px;position:relative;transition:border-color .3s,transform .3s;
 }
-.services-grid{
-  display:grid;grid-template-columns:1fr;gap:16px;margin-top:40px;position:relative;z-index:1;
+.svc-card:hover{border-color:var(--accent);transform:translateY(-4px);}
+.svc-card::before,.svc-card::after{
+  content:'';position:absolute;width:12px;height:12px;border-color:var(--accent);opacity:0;transition:opacity .3s;
 }
-@media(min-width:700px){.services-grid{grid-template-columns:1fr 1fr;}}
-@media(min-width:1080px){.services-grid{grid-template-columns:1fr 1fr 1fr;}}
-.service-card{
-  border:1px solid var(--line);background:var(--bg-card);
-  padding:26px 22px;position:relative;
-  transition:transform .3s ease, border-color .3s ease, background .3s ease;
-}
-.service-card::before,.service-card::after{
-  content:'';position:absolute;width:14px;height:14px;
-  border:1px solid var(--accent);opacity:0;transition:opacity .3s;
-}
-.service-card::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
-.service-card::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
-.service-card:hover{transform:translateY(-4px);border-color:rgba(255,90,31,0.4);}
-.service-card:hover::before,.service-card:hover::after{opacity:1;}
-.service-card .tag{
-  font-family:var(--font-mono);font-size:11.5px;color:var(--muted);
-  letter-spacing:0.1em;margin-bottom:16px;display:block;
-}
-.service-card h3{font-size:19px;margin-bottom:14px;color:#fff;}
-.service-card ul{list-style:none;font-size:14px;color:var(--muted);}
-.service-card ul li{padding:6px 0;border-top:1px solid var(--line);}
-.service-card ul li:first-child{border-top:none;}
+.svc-card::before{top:8px;left:8px;border-top:2px solid;border-left:2px solid;}
+.svc-card::after{bottom:8px;right:8px;border-bottom:2px solid;border-right:2px solid;}
+.svc-card:hover::before,.svc-card:hover::after{opacity:1;}
+.svc-icon{width:44px;height:44px;border-radius:10px;background:rgba(255,106,31,.12);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.svc-icon svg{width:22px;height:22px;stroke:var(--accent-2);stroke-width:1.6;}
+.svc-card h3{font-family:'Manrope',sans-serif;font-size:1.12rem;font-weight:700;color:#fff;margin-bottom:12px;}
+.svc-card ul{list-style:none;color:var(--text-dim);font-size:.9rem;display:flex;flex-direction:column;gap:6px;}
+.svc-card ul li{padding-left:16px;position:relative;}
+.svc-card ul li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:1px;background:var(--accent-2);}
 
-/* ===== ADVANTAGES ===== */
-.adv-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:40px;
-  background:var(--line);border:1px solid var(--line);
-}
-@media(min-width:760px){.adv-grid{grid-template-columns:1fr 1fr 1fr 1fr;}}
-.adv-item{
-  background:var(--bg);padding:32px 22px;text-align:left;
-}
-.adv-item .count{
-  font-family:var(--font-head);font-weight:900;font-size:44px;color:var(--accent);
-  display:flex;align-items:baseline;gap:4px;
-}
-.adv-item .count span{font-size:20px;color:var(--accent-2);}
-.adv-item p{color:var(--muted);font-size:13.5px;margin-top:10px;}
+/* STATS / WHY */
+.why{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.why-inner{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+@media(max-width:860px){.why-inner{grid-template-columns:1fr;}}
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.stat-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;}
+.stat-num{font-family:'Tektur',sans-serif;font-size:2.6rem;font-weight:800;color:var(--accent-2);line-height:1;}
+.stat-card p{color:var(--text-dim);font-size:.86rem;margin-top:8px;}
+.why-list{display:flex;flex-direction:column;gap:22px;margin-top:26px;}
+.why-item{display:flex;gap:16px;align-items:flex-start;}
+.why-item .ico{flex:0 0 40px;width:40px;height:40px;border-radius:10px;background:rgba(255,181,69,.12);display:flex;align-items:center;justify-content:center;}
+.why-item svg{width:20px;height:20px;stroke:var(--accent-2);stroke-width:1.6;}
+.why-item h4{color:#fff;font-family:'Manrope',sans-serif;font-size:1.02rem;margin-bottom:4px;}
+.why-item p{color:var(--text-dim);font-size:.92rem;}
 
-.why-list{
-  display:grid;grid-template-columns:1fr;gap:16px;margin-top:44px;
-}
-@media(min-width:760px){.why-list{grid-template-columns:1fr 1fr;}}
-.why-item{
-  display:flex;gap:16px;padding:20px 0;border-top:1px solid var(--line);
-}
-.why-item svg{flex-shrink:0;stroke:var(--accent-2);}
-.why-item h4{font-size:16.5px;color:#fff;margin-bottom:6px;}
-.why-item p{font-size:14px;color:var(--muted);}
+/* PROCESS */
+.process-steps{display:flex;flex-direction:column;gap:0;margin-top:50px;}
+.pstep{display:grid;grid-template-columns:90px 1fr;gap:26px;padding:30px 0;border-top:1px solid var(--line);position:relative;}
+.pstep:last-child{border-bottom:1px solid var(--line);}
+.pstep .pnum{font-family:'Tektur',sans-serif;font-size:2.2rem;color:transparent;-webkit-text-stroke:1px var(--accent);font-weight:800;}
+.pstep h3{color:#fff;font-family:'Manrope',sans-serif;font-size:1.15rem;margin-bottom:8px;}
+.pstep p{color:var(--text-dim);font-size:.95rem;max-width:60ch;}
+@media(max-width:600px){.pstep{grid-template-columns:56px 1fr;}}
 
-/* ===== PROCESS ===== */
-.process-section{background:var(--bg-soft);}
-.process-list{margin-top:44px;position:relative;}
-.process-step{
-  display:grid;grid-template-columns:70px 1fr;gap:20px;
-  padding:26px 0;border-top:1px solid var(--line);
-  position:relative;
-}
-.process-step:first-child{border-top:none;}
-.process-step .step-num{
-  font-family:var(--font-head);font-weight:900;font-size:34px;color:var(--accent);opacity:0.8;
-}
-.process-step h3{font-size:18px;color:#fff;margin-bottom:8px;}
-.process-step p{font-size:14.5px;color:var(--muted);max-width:600px;}
+/* TESTIMONIALS */
+.testi{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr;}}
+.testi-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:16px;}
+.stars{display:flex;gap:4px;}
+.stars svg{width:16px;height:16px;fill:var(--accent-2);stroke:var(--accent-2);}
+.testi-card p{color:var(--text);font-size:.96rem;flex:1;}
+.testi-foot{display:flex;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:14px;}
+.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-family:'Tektur',sans-serif;font-weight:700;color:#171700;font-size:.9rem;}
+.testi-foot strong{font-size:.9rem;color:#fff;display:block;}
+.testi-foot span{font-size:.8rem;color:var(--text-dim);}
 
-/* ===== REVIEWS ===== */
-.reviews-grid{
-  display:grid;grid-template-columns:1fr;gap:18px;margin-top:40px;
-}
-@media(min-width:760px){.reviews-grid{grid-template-columns:1fr 1fr 1fr;}}
-.review-card{
-  border:1px solid var(--line);background:var(--bg-card);padding:26px 22px;
-  display:flex;flex-direction:column;gap:16px;
-}
-.review-quote{color:var(--text);font-size:14.5px;line-height:1.7;}
-.review-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:14px;}
-.review-name{font-family:var(--font-head);font-size:14px;color:#fff;}
-.review-car{font-family:var(--font-mono);font-size:12px;color:var(--muted);}
-.stars{display:flex;gap:3px;}
-.stars svg{width:14px;height:14px;fill:var(--accent-2);stroke:none;}
-
-/* ===== ABOUT ===== */
-.about-grid{
-  display:grid;grid-template-columns:1fr;gap:40px;margin-top:40px;align-items:start;
-}
-@media(min-width:900px){.about-grid{grid-template-columns:1.1fr 0.9fr;}}
-.about-text p{color:var(--muted);font-size:15.5px;margin-bottom:16px;}
+/* ABOUT */
+.about-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;}
+@media(max-width:860px){.about-inner{grid-template-columns:1fr;}}
 .about-visual{
-  border:1px solid var(--line);background:var(--bg-card);padding:30px;position:relative;min-height:280px;
-  display:flex;flex-direction:column;justify-content:center;gap:18px;
+  border:1px solid var(--line);border-radius:var(--radius);padding:34px;
+  background:radial-gradient(circle at 30% 20%, rgba(255,106,31,.14), transparent 60%);
+  position:relative;min-height:320px;display:flex;align-items:center;justify-content:center;
 }
-.about-map-line{display:flex;gap:12px;align-items:center;font-size:14px;color:var(--muted);}
-.about-map-line svg{stroke:var(--accent);flex-shrink:0;}
-.about-map-line b{color:var(--text);font-weight:600;}
+.about-visual svg{width:100%;max-width:280px;stroke:var(--accent-2);}
+.about p{color:var(--text-dim);margin-top:16px;font-size:1rem;max-width:56ch;}
+.about-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+.about-tags span{border:1px solid var(--line);padding:8px 14px;border-radius:100px;font-size:.82rem;color:var(--text-dim);font-family:'IBM Plex Mono',monospace;}
 
-/* ===== FAQ ===== */
-.faq-section{background:var(--bg-soft);}
-.faq-list{margin-top:40px;}
-.faq-item{border-top:1px solid var(--line);}
-.faq-item:last-child{border-bottom:1px solid var(--line);}
+/* FAQ */
+.faq-list{max-width:800px;margin-top:44px;}
+.faq-item{border-bottom:1px solid var(--line);}
 .faq-q{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:22px 4px;cursor:pointer;font-family:var(--font-head);font-size:16.5px;color:#fff;
-  gap:20px;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:22px 0;cursor:pointer;font-family:'Manrope',sans-serif;font-weight:700;color:#fff;font-size:1.02rem;
 }
-.faq-q .plus{
-  flex-shrink:0;width:22px;height:22px;position:relative;
-}
-.faq-q .plus::before,.faq-q .plus::after{
-  content:'';position:absolute;background:var(--accent);transition:transform .3s ease;
-}
-.faq-q .plus::before{width:100%;height:2px;top:50%;left:0;transform:translateY(-50%);}
-.faq-q .plus::after{width:2px;height:100%;left:50%;top:0;transform:translateX(-50%);}
-.faq-item.open .plus::after{transform:translateX(-50%) rotate(90deg);opacity:0;}
-.faq-a{
-  max-height:0;overflow:hidden;transition:max-height .35s ease;
-}
-.faq-a p{padding:0 4px 22px;color:var(--muted);font-size:14.5px;max-width:680px;}
+.faq-q svg{width:20px;height:20px;stroke:var(--accent-2);transition:transform .3s;flex-shrink:0;}
+.faq-item.open .faq-q svg{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.faq-a p{color:var(--text-dim);padding-bottom:22px;font-size:.95rem;max-width:70ch;}
 
-/* ===== FINAL CTA ===== */
-.final-cta{
-  position:relative;padding:100px 0;text-align:center;overflow:hidden;
-  background:radial-gradient(ellipse 70% 90% at 50% 0%, rgba(255,90,31,0.16), transparent 65%), var(--bg);
+/* CTA FINAL */
+.cta-final{
+  background:linear-gradient(135deg,#1e1204,#12130f 60%);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  text-align:center;
 }
-.final-cta h2{font-size:32px;color:#fff;margin-bottom:16px;}
-.final-cta p{color:var(--muted);font-size:16px;margin-bottom:36px;max-width:520px;margin-inline:auto;}
-.final-actions{display:flex;flex-direction:column;align-items:center;gap:16px;}
-.final-phone{font-family:var(--font-head);font-size:30px;color:var(--accent-2);font-weight:700;}
-@media(min-width:640px){.final-cta h2{font-size:42px;}.final-phone{font-size:38px;}}
+.cta-final h2{margin-bottom:16px;}
+.cta-final .sub{margin:0 auto 34px;}
+.cta-actions{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;align-items:center;}
+.cta-addr{margin-top:34px;color:var(--text-dim);font-size:.92rem;}
 
-/* ===== FOOTER ===== */
-footer{
-  border-top:1px solid var(--line);padding:56px 0 100px;background:var(--bg);
-}
-.footer-grid{
-  display:grid;grid-template-columns:1fr;gap:32px;
-}
-@media(min-width:760px){.footer-grid{grid-template-columns:1.3fr 1fr 1fr;}}
-.footer-col h4{font-family:var(--font-mono);font-size:12px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;}
-.footer-col p, .footer-col a{font-size:14.5px;color:var(--text);display:block;margin-bottom:10px;}
-.footer-col a:hover{color:var(--accent-2);}
-.footer-bottom{
-  margin-top:50px;padding-top:24px;border-top:1px solid var(--line);
-  display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--muted);
-}
-@media(min-width:760px){.footer-bottom{flex-direction:row;justify-content:space-between;}}
+/* FOOTER */
+footer{padding:60px 0 40px;border-top:1px solid var(--line);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;}
+@media(max-width:760px){.foot-grid{grid-template-columns:1fr;gap:30px;}}
+.foot-grid h4{color:#fff;font-size:.92rem;margin-bottom:14px;font-family:'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;}
+.foot-grid p, .foot-grid a{color:var(--text-dim);font-size:.92rem;display:block;margin-bottom:8px;}
+.foot-grid a:hover{color:var(--accent-2);}
+.foot-bottom{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--text-dim);font-size:.82rem;}
 
-/* sticky call button mobile */
-.sticky-call{
+/* MOBILE CALL BUTTON */
+.mobile-call{
   position:fixed;bottom:0;left:0;right:0;z-index:200;
-  background:linear-gradient(135deg,var(--accent),#ff7a3d);
-  color:#14110d;text-align:center;padding:16px 0;
-  font-family:var(--font-head);font-weight:700;font-size:16px;letter-spacing:0.02em;
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  box-shadow:0 -6px 24px rgba(0,0,0,0.4);
+  background:var(--accent);color:#171700;
+  display:none;align-items:center;justify-content:center;gap:10px;
+  padding:16px;font-family:'Tektur',sans-serif;font-weight:700;font-size:1rem;
+  box-shadow:0 -6px 26px rgba(0,0,0,.4);
 }
-@media(min-width:900px){.sticky-call{display:none;}}
-body{padding-bottom:66px;}
-@media(min-width:900px){body{padding-bottom:0;}}
-
-/* reveal animations */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
-.reveal.in{opacity:1;transform:translateY(0);}
-@media(prefers-reduced-motion:reduce){
-  .reveal{opacity:1;transform:none;transition:none;}
-  .marquee{animation:none;}
-  html{scroll-behavior:auto;}
-}
+@media(max-width:760px){.mobile-call{display:flex;}body{padding-bottom:64px;}}
 
 /* mobile nav panel */
 .mobile-nav{
-  position:fixed;inset:0;background:rgba(10,11,12,0.98);z-index:150;
-  display:flex;flex-direction:column;justify-content:center;gap:24px;padding:40px;
-  transform:translateX(100%);transition:transform .35s ease;
+  position:fixed;top:0;right:-100%;width:78%;max-width:320px;height:100vh;
+  background:var(--bg-2);border-left:1px solid var(--line);z-index:150;
+  transition:right .35s ease;padding:100px 30px 30px;display:flex;flex-direction:column;gap:22px;
 }
-.mobile-nav.open{transform:translateX(0);}
-.mobile-nav a{font-family:var(--font-head);font-size:26px;color:#fff;}
-.mobile-nav .btn{margin-top:20px;align-self:flex-start;}
-.mobile-nav-close{position:absolute;top:24px;right:24px;font-size:30px;color:var(--muted);cursor:pointer;}
+.mobile-nav.open{right:0;}
+.mobile-nav a{font-size:1.05rem;color:var(--text);}
+.mobile-nav .head-phone{display:block;color:var(--accent-2);font-family:'IBM Plex Mono',monospace;}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .3s;z-index:140;}
+.overlay.open{opacity:1;pointer-events:auto;}
 
+@media(prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important;}
+  html{scroll-behavior:auto;}
+}
 </style>
 </head>
 <body>
 
-<header id="siteHeader">
-  <div class="wrap nav-row">
-    <a class="logo" href="#top"><b>РЕМ</b>ЗОНА<span>Автосервис · Невский район</span></a>
-    <nav class="links">
-      <a href="#services">Услуги</a>
-      <a href="#why">Почему мы</a>
-      <a href="#process">Как это работает</a>
-      <a href="#reviews">Отзывы</a>
-      <a href="#faq">Вопросы</a>
+<header>
+  <div class="wrap header-inner">
+    <a href="#top" class="logo">Рем<span>зона</span></a>
+    <nav>
+      <ul>
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#why">Преимущества</a></li>
+        <li><a href="#process">Как это работает</a></li>
+        <li><a href="#testi">Отзывы</a></li>
+        <li><a href="#faq">Вопросы</a></li>
+      </ul>
     </nav>
-    <div class="header-cta">
-      <a class="phone-top" href="tel:88124906730">8 (812) 490-67-30</a>
-      <a class="btn btn-primary" href="tel:88124906730">Позвонить</a>
+    <div class="head-right">
+      <a class="head-phone" href="tel:88124906730">8 (812) 490-67-30</a>
+      <button class="burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></button>
     </div>
-    <div class="burger" id="burgerBtn"><span></span><span></span><span></span></div>
   </div>
 </header>
 
+<div class="overlay" id="overlay"></div>
 <div class="mobile-nav" id="mobileNav">
-  <div class="mobile-nav-close" id="mobileClose">×</div>
   <a href="#services">Услуги</a>
-  <a href="#why">Почему мы</a>
+  <a href="#why">Преимущества</a>
   <a href="#process">Как это работает</a>
-  <a href="#reviews">Отзывы</a>
+  <a href="#testi">Отзывы</a>
   <a href="#faq">Вопросы</a>
-  <a class="btn btn-primary" href="tel:88124906730">Позвонить: 8 (812) 490-67-30</a>
+  <a class="head-phone" href="tel:88124906730">8 (812) 490-67-30</a>
 </div>
 
 <main id="top">
 
-  <!-- HERO -->
-  <section class="hero">
-    <svg class="hero-gear" viewBox="0 0 200 200" fill="none">
-      <circle cx="100" cy="100" r="60" stroke="#ff5a1f" stroke-width="1.5"/>
-      <circle cx="100" cy="100" r="30" stroke="#ff5a1f" stroke-width="1.5"/>
-      <g stroke="#ff5a1f" stroke-width="1.5">
-        <line x1="100" y1="20" x2="100" y2="40"/>
-        <line x1="100" y1="160" x2="100" y2="180"/>
-        <line x1="20" y1="100" x2="40" y2="100"/>
-        <line x1="160" y1="100" x2="180" y2="100"/>
-        <line x1="43" y1="43" x2="57" y2="57"/>
-        <line x1="143" y1="143" x2="157" y2="157"/>
-        <line x1="43" y1="157" x2="57" y2="143"/>
-        <line x1="143" y1="57" x2="157" y2="43"/>
-      </g>
-    </svg>
-    <div class="wrap hero-inner">
-      <span class="eyebrow">Невский район · Дыбенко / Большевиков / Дальневосточный пр.</span>
-      <h1>Ремонт авто, где <em>видно</em> каждый шаг</h1>
-      <p class="sub">Свободный доступ в ремзону — вы наблюдаете за работой мастера сами. Не навязываем доп.услуги и не накручиваем чек. Диагностика, двигатель, ходовая, шиномонтаж — на одной площадке.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="tel:88124906730">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          8 (812) 490-67-30
-        </a>
-        <a class="btn btn-ghost" href="#services">Смотреть услуги</a>
-      </div>
-      <div class="hero-points">
-        <div class="hero-point">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>
-          Открытая ремзона — доступ клиента к машине во время работы
-        </div>
-        <div class="hero-point">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>
-          Без навязанных допов — озвучиваем только то, что реально нужно
-        </div>
-        <div class="hero-point">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>
-          Иномарки и отечественные — своя база запчастей
-        </div>
-        <div class="hero-point">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>
-          Рядом с метро Дыбенко, Большевиков, Дальневосточный пр-т
-        </div>
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-ghost">РЗ</div>
+  <div class="wrap hero-content">
+    <div class="label mono">АВТОСЕРВИС · НЕВСКИЙ РАЙОН СПБ</div>
+    <h1>Ремонт авто, который <em>видно своими глазами</em></h1>
+    <p class="sub">Свободный доступ в ремзону - стойте рядом и смотрите, что делают с машиной. Не навязываем то, что не нужно, и не тянем время. 22 направления работ в одном месте, у Дыбенко, Большевиков и Дальневосточного проспекта.</p>
+    <div class="hero-actions">
+      <a href="tel:88124906730" class="btn btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Записаться на ремонт
+      </a>
+      <div class="hero-phone">
+        <small>ЗВОНИТЕ ПРЯМО СЕЙЧАС</small>
+        <a href="tel:88124906730">8 (812) 490-67-30</a>
       </div>
     </div>
-  </section>
-
-  <div class="marquee-wrap">
-    <div class="marquee">
-      <span>Диагностика<span>Двигатель</span><span>Ходовая</span><span>Развал-схождение</span><span>Шиномонтаж</span><span>Турбины</span><span>Инжектор</span><span>Автозвук</span><span>Кондиционеры</span></span>
-      <span>Диагностика<span>Двигатель</span><span>Ходовая</span><span>Развал-схождение</span><span>Шиномонтаж</span><span>Турбины</span><span>Инжектор</span><span>Автозвук</span><span>Кондиционеры</span></span>
+    <div class="hero-badges">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>Свободный доступ в ремзону</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Без навязанных услуг</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>22 направления работ</span>
     </div>
   </div>
+</section>
 
-  <!-- PAINS -->
-  <section class="section" id="pains">
-    <div class="wrap">
-      <div class="label">[01] С ЧЕМ ВЫ ОБЫЧНО СТАЛКИВАЕТЕСЬ</div>
-      <div class="section-head">
-        <h2 class="reveal">Знакомая история с автосервисами</h2>
-        <p class="reveal">Прежде чем звонить нам, вы, скорее всего, уже это проходили.</p>
+<section class="pain">
+  <div class="wrap">
+    <div class="pain-head reveal">
+      <div class="label mono">[02] ЗНАКОМАЯ СИТУАЦИЯ</div>
+      <h2>Так обычно выглядит поход в автосервис</h2>
+    </div>
+    <div class="pain-grid stagger">
+      <div class="pain-card reveal">
+        <div class="num">01</div>
+        <h3>Машину забирают "за шторку"</h3>
+        <p>Вы отдаёте ключи и ждёте в коридоре, не понимая, что происходит с вашим авто и почему ремонт затягивается.</p>
+        <div class="pain-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>У нас вы стоите прямо в ремзоне</div>
       </div>
-      <div class="pains-grid">
-        <div class="pain-card reveal">
-          <span class="num mono">01</span>
-          <h3>Машину закатывают в бокс — и всё</h3>
-          <p>Что там делают, сколько времени займёт и почему в итоге счёт вырос втрое — узнаёте только по факту.</p>
-        </div>
-        <div class="pain-card reveal">
-          <span class="num mono">02</span>
-          <h3>«Заодно посмотрели» — и вписали в чек</h3>
-          <p>Диагностика находит десяток «проблем», о которых вы не просили и о цене которых не спрашивали.</p>
-        </div>
-        <div class="pain-card reveal">
-          <span class="num mono">03</span>
-          <h3>Непонятно, кому доверить турбину или рейку</h3>
-          <p>Сложный ремонт — редко у кого есть опыт с турбинами, инжекторами и рулевыми рейками одновременно.</p>
-        </div>
-        <div class="pain-card reveal">
-          <span class="num mono">04</span>
-          <h3>Далеко ехать через весь город</h3>
-          <p>Хочется сервис рядом с домом — в Невском районе, а не через полгорода на другой конец СПб.</p>
-        </div>
+      <div class="pain-card reveal">
+        <div class="num">02</div>
+        <h3>В чек добавляют лишнее</h3>
+        <p>Приехали заменить масло - уехали с заменёнными "на всякий случай" деталями и суммой в два раза больше ожидаемой.</p>
+        <div class="pain-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Говорим только о реальной проблеме</div>
+      </div>
+      <div class="pain-card reveal">
+        <div class="num">03</div>
+        <h3>Непонятно, куда ехать</h3>
+        <p>СТО спрятано во дворах, навигатор путает, а время на поиски уходит больше, чем на сам ремонт.</p>
+        <div class="pain-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Мы рядом с Дыбенко и Большевиков</div>
+      </div>
+      <div class="pain-card reveal">
+        <div class="num">04</div>
+        <h3>Один мастер - одна услуга</h3>
+        <p>Диагностику делают в одном месте, кузовные и сварочные работы - в другом, а шиномонтаж - в третьем.</p>
+        <div class="pain-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>22 направления в одном сервисе</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SERVICES -->
-  <section class="section services-section" id="services">
-    <div class="section-bg-grid"></div>
-    <div class="ghost-num">22</div>
-    <div class="wrap" style="position:relative;">
-      <div class="label">[02] УСЛУГИ</div>
-      <div class="section-head">
-        <h2 class="reveal">22 направления в одной ремзоне</h2>
-        <p class="reveal">От компьютерной диагностики до сварочных работ — не нужно возить машину по трём точкам.</p>
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>Диагностика</span><span>Развал-схождение</span><span>Ремонт двигателя</span><span>Шиномонтаж</span><span>Ремонт турбин</span><span>Автозвук</span><span>Сварочные работы</span><span>Ремонт инжекторов</span><span>Замена масла</span><span>Автосигнализации</span>
+    <span>Диагностика</span><span>Развал-схождение</span><span>Ремонт двигателя</span><span>Шиномонтаж</span><span>Ремонт турбин</span><span>Автозвук</span><span>Сварочные работы</span><span>Ремонт инжекторов</span><span>Замена масла</span><span>Автосигнализации</span>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="svc-head reveal">
+      <div>
+        <div class="label mono">[03] УСЛУГИ</div>
+        <h2>Всё, что нужно машине, - в одном сервисе</h2>
       </div>
-      <div class="services-grid">
-
-        <div class="service-card reveal">
-          <span class="tag">01 / ЭЛЕКТРИКА</span>
-          <h3>Диагностика и электрика</h3>
-          <ul>
-            <li>Компьютерная диагностика</li>
-            <li>Ремонт электронных систем авто</li>
-            <li>Ремонт стартеров и генераторов</li>
-            <li>Установка автосигнализаций</li>
-            <li>Аккумуляторы — подбор и замена</li>
-          </ul>
-        </div>
-
-        <div class="service-card reveal">
-          <span class="tag">02 / ДВИГАТЕЛЬ</span>
-          <h3>Двигатель и топливо</h3>
-          <ul>
-            <li>Ремонт бензиновых двигателей</li>
-            <li>Ремонт инжекторов</li>
-            <li>Ремонт турбин</li>
-            <li>Ремонт выхлопных систем</li>
-          </ul>
-        </div>
-
-        <div class="service-card reveal">
-          <span class="tag">03 / ХОДОВАЯ</span>
-          <h3>Ходовая часть и кузов</h3>
-          <ul>
-            <li>Развал-схождение</li>
-            <li>Ремонт ходовой части</li>
-            <li>Ремонт рулевых реек</li>
-            <li>Сварочные работы</li>
-          </ul>
-        </div>
-
-        <div class="service-card reveal">
-          <span class="tag">04 / СЕЗОН</span>
-          <h3>Шины и обслуживание</h3>
-          <ul>
-            <li>Шиномонтаж</li>
-            <li>Замена масла</li>
-            <li>Автохимия</li>
-          </ul>
-        </div>
-
-        <div class="service-card reveal">
-          <span class="tag">05 / КОМФОРТ</span>
-          <h3>Комфорт и звук</h3>
-          <ul>
-            <li>Обслуживание климатических систем</li>
-            <li>Автозвук</li>
-            <li>Автоаксессуары</li>
-          </ul>
-        </div>
-
-        <div class="service-card reveal">
-          <span class="tag">06 / ЗАПЧАСТИ</span>
-          <h3>Запчасти на месте</h3>
-          <ul>
-            <li>Запчасти для иномарок</li>
-            <li>Запчасти для отечественных авто</li>
-          </ul>
-        </div>
-
+      <p class="sub">От компьютерной диагностики до сварочных работ. Привезли машину один раз - решили все вопросы.</p>
+    </div>
+    <div class="svc-grid stagger">
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 20h10M9 14l2-4 2 4 2-6"/></svg></div>
+        <h3>Диагностика и электрика</h3>
+        <ul>
+          <li>Компьютерная диагностика</li>
+          <li>Ремонт электронных систем</li>
+          <li>Ремонт стартеров и генераторов</li>
+          <li>Автосигнализации</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        <h3>Двигатель и топливная</h3>
+        <ul>
+          <li>Ремонт бензиновых двигателей</li>
+          <li>Ремонт инжекторов</li>
+          <li>Ремонт турбин</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-4l2-5h9l4 4h1v5h-2M9 17h6"/></svg></div>
+        <h3>Ходовая и рулевое</h3>
+        <ul>
+          <li>Ремонт ходовой части</li>
+          <li>Развал-схождение</li>
+          <li>Ремонт рулевых реек</li>
+          <li>Шиномонтаж</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 3v4M4 5h4M14 4l1.5 1.5L14 7M20 20l-4-4M8 20l8-8"/></svg></div>
+        <h3>Кузов и сварка</h3>
+        <ul>
+          <li>Сварочные работы</li>
+          <li>Ремонт выхлопных систем</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <h3>Комфорт и звук</h3>
+        <ul>
+          <li>Климатические системы</li>
+          <li>Автозвук</li>
+          <li>Автоаксессуары</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v18M4 8h16M6 12h12M8 16h8"/></svg></div>
+        <h3>Расходники и запчасти</h3>
+        <ul>
+          <li>Замена масла и автохимия</li>
+          <li>Аккумуляторы</li>
+          <li>Запчасти для иномарок</li>
+          <li>Запчасти для отечественных авто</li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- WHY / ADVANTAGES -->
-  <section class="section" id="why">
-    <div class="wrap">
-      <div class="label">[03] ПОЧЕМУ РЕМЗОНА</div>
-      <div class="section-head">
-        <h2 class="reveal">Прозрачность вместо обещаний</h2>
-        <p class="reveal">Мы не говорим «индивидуальный подход» — вот что это значит на практике.</p>
-      </div>
-
-      <div class="adv-grid">
-        <div class="adv-item reveal">
-          <div class="count"><span data-count="22">0</span></div>
-          <p>направления работ на одной площадке — от диагностики до сварки</p>
-        </div>
-        <div class="adv-item reveal">
-          <div class="count"><span data-count="3">0</span></div>
-          <p>ориентира рядом: метро Дыбенко, Большевиков, Дальневосточный пр-т</p>
-        </div>
-        <div class="adv-item reveal">
-          <div class="count"><span data-count="0">0</span></div>
-          <p>навязанных допуслуг — говорим только о том, что реально нужно машине</p>
-        </div>
-        <div class="adv-item reveal">
-          <div class="count"><span data-count="100">0</span><span>%</span></div>
-          <p>доступа в ремзону — весь процесс ремонта проходит у вас на глазах</p>
-        </div>
-      </div>
-
+<section class="why" id="why">
+  <div class="wrap why-inner">
+    <div>
+      <div class="label mono reveal">[04] ПОЧЕМУ РЕМЗОНА</div>
+      <h2 class="reveal">Ремонт под наблюдением, а не за закрытой дверью</h2>
       <div class="why-list">
         <div class="why-item reveal">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
-          <div><h4>Открытый бокс</h4><p>Можете стоять рядом с подъёмником и видеть, что именно делает мастер с вашей машиной.</p></div>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div><h4>Свободный доступ в ремзону</h4><p>Вы можете стоять рядом и смотреть, что происходит с машиной, задавать вопросы механику напрямую.</p></div>
         </div>
         <div class="why-item reveal">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          <div><h4>Без «нашли ещё проблему»</h4><p>Диагностика — это отчёт, а не список для допродаж. О любых доп.работах спрашиваем до, не после.</p></div>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+          <div><h4>Не навязываем доп.услуги</h4><p>Называем только ту работу, которая реально нужна автомобилю - без "заодно поменяйте" и накрутки чека.</p></div>
         </div>
         <div class="why-item reveal">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          <div><h4>Свои запчасти в наличии</h4><p>Запчасти для иномарок и отечественных авто — без ожидания заказа на неделю.</p></div>
-        </div>
-        <div class="why-item reveal">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 2v20M2 12h20"/></svg>
-          <div><h4>Сложный ремонт — тоже к нам</h4><p>Турбины, инжекторы, рулевые рейки — работы, за которые берутся не в каждом сервисе.</p></div>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+          <div><h4>22 направления в одном месте</h4><p>От диагностики и электрики до сварки и рулевых реек - не нужно ездить по разным сервисам.</p></div>
         </div>
       </div>
     </div>
-  </section>
+    <div class="stat-grid">
+      <div class="stat-card reveal"><div class="stat-num" data-count="22">0</div><p>направления работ автосервиса</p></div>
+      <div class="stat-card reveal"><div class="stat-num" data-count="3">0</div><p>станции метро и проспекта рядом</p></div>
+      <div class="stat-card reveal"><div class="stat-num" data-count="100" data-suffix="%">0</div><p>доступ к машине во время ремонта</p></div>
+      <div class="stat-card reveal"><div class="stat-num" data-count="0">0</div><p>навязанных допуслуг в чеке</p></div>
+    </div>
+  </div>
+</section>
 
-  <!-- PROCESS -->
-  <section class="section process-section" id="process">
-    <div class="section-bg-grid"></div>
-    <div class="wrap" style="position:relative;">
-      <div class="label">[04] КАК ПРОХОДИТ РЕМОНТ</div>
-      <div class="section-head">
-        <h2 class="reveal">Понятный процесс без сюрпризов</h2>
-      </div>
-      <div class="process-list">
-        <div class="process-step reveal">
-          <div class="step-num mono">01</div>
-          <div><h3>Звонок и запись</h3><p>Описываете проблему по телефону — сразу говорим, что нужно проверить и сколько это может занять.</p></div>
-        </div>
-        <div class="process-step reveal">
-          <div class="step-num mono">02</div>
-          <div><h3>Диагностика при вас</h3><p>Машина на подъёмнике — вы рядом. Мастер показывает и объясняет, что видит, без технического жаргона.</p></div>
-        </div>
-        <div class="process-step reveal">
-          <div class="step-num mono">03</div>
-          <div><h3>Согласование работ</h3><p>Называем перечень и стоимость до начала ремонта. Если находим что-то ещё — сообщаем и спрашиваем, а не делаем молча.</p></div>
-        </div>
-        <div class="process-step reveal">
-          <div class="step-num mono">04</div>
-          <div><h3>Ремонт в открытой зоне</h3><p>Пока автомобиль в ремзоне, вы можете находиться рядом и наблюдать за ходом работы — доступ не закрыт.</p></div>
-        </div>
-        <div class="process-step reveal">
-          <div class="step-num mono">05</div>
-          <div><h3>Выдача и пояснение</h3><p>Показываем, что было сделано и что заменено. Никаких «доверьтесь нам» без объяснений.</p></div>
-        </div>
-      </div>
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="label mono">[05] КАК ЭТО РАБОТАЕТ</div>
+      <h2>От звонка до выезда со СТО</h2>
     </div>
-  </section>
+    <div class="process-steps stagger">
+      <div class="pstep reveal"><div class="pnum">01</div><div><h3>Звонок и запись</h3><p>Звоните по телефону, описываете проблему - подсказываем удобное время и примерно оцениваем работу.</p></div></div>
+      <div class="pstep reveal"><div class="pnum">02</div><div><h3>Приезд на ул. Тельмана</h3><p>Подъезжаете к сервису рядом с Дыбенко, Большевиков и Дальневосточным проспектом - найти легко.</p></div></div>
+      <div class="pstep reveal"><div class="pnum">03</div><div><h3>Диагностика при вас</h3><p>Заходите в ремзону, смотрите на подъёмник, механик показывает и объясняет, что происходит с машиной.</p></div></div>
+      <div class="pstep reveal"><div class="pnum">04</div><div><h3>Согласование работ</h3><p>Называем стоимость и сроки до начала ремонта - без "довеска" к чеку в конце.</p></div></div>
+      <div class="pstep reveal"><div class="pnum">05</div><div><h3>Выдача авто</h3><p>Забираете машину, проверяете результат - вопросы по сделанной работе разбираем сразу на месте.</p></div></div>
+    </div>
+  </div>
+</section>
 
-  <!-- REVIEWS -->
-  <section class="section" id="reviews">
-    <div class="wrap">
-      <div class="label">[05] ОТЗЫВЫ</div>
-      <div class="section-head">
-        <h2 class="reveal">Что говорят те, кто уже приезжал</h2>
+<section class="testi" id="testi">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="label mono">[06] ОТЗЫВЫ</div>
+      <h2>Что говорят клиенты после ремонта</h2>
+    </div>
+    <div class="testi-grid stagger" style="margin-top:44px;">
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>Стоял рядом, пока смотрели подвеску - показали на подъёмнике, что именно менять. Никто не пытался продать лишнее.</p>
+        <div class="testi-foot"><div class="avatar">СВ</div><div><strong>Сергей</strong><span>Volkswagen Passat</span></div></div>
       </div>
-      <div class="reviews-grid">
-        <div class="review-card reveal">
-          <div class="stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-          </div>
-          <p class="review-quote">Стоял рядом, пока смотрели ходовую — показали на подъёмнике, что именно стучит. Первый раз не пришлось верить на слово.</p>
-          <div class="review-foot"><span class="review-name">Дмитрий</span><span class="review-car mono">Skoda Octavia</span></div>
-        </div>
-        <div class="review-card reveal">
-          <div class="stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-          </div>
-          <p class="review-quote">Приезжала на диагностику климат-контроля, думала накинут ещё что-нибудь. Сделали только то, о чём договорились по телефону.</p>
-          <div class="review-foot"><span class="review-name">Ирина</span><span class="review-car mono">Hyundai Solaris</span></div>
-        </div>
-        <div class="review-card reveal">
-          <div class="stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-          </div>
-          <p class="review-quote">Искал сервис, который берётся за рулевую рейку, а не отсылает к дилеру. Здесь взялись и объяснили, что именно меняли.</p>
-          <div class="review-foot"><span class="review-name">Алексей</span><span class="review-car mono">Lada Vesta</span></div>
-        </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>Ехала на диагностику, думала будет дорого - назвали только реальную проблему с генератором, без накруток.</p>
+        <div class="testi-foot"><div class="avatar">ОК</div><div><strong>Ольга</strong><span>Kia Rio</span></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>Удобно, что рядом с Большевиков - заехал после работы. Сделали развал-схождение и заменили масло за один визит.</p>
+        <div class="testi-foot"><div class="avatar">ДМ</div><div><strong>Дмитрий</strong><span>Hyundai Solaris</span></div></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ABOUT -->
-  <section class="section" id="about">
-    <div class="wrap">
-      <div class="label">[06] О НАС</div>
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <h2 style="font-size:30px;color:#fff;margin-bottom:20px;">Автосервис в Невском районе, где ремонт делают удобным</h2>
-          <p>«Ремзона» работает в Невском районе Санкт-Петербурга — рядом с метро Дыбенко, Большевиков и Дальневосточным проспектом. Мы собрали в одном месте диагностику, ремонт двигателя, ходовой, электрики и шиномонтаж, чтобы не гонять машину по разным точкам города.</p>
-          <p>Главный принцип — свободный доступ в ремзону. Вы не сдаёте машину «в чёрный ящик»: можете находиться рядом, пока идёт работа, задавать вопросы мастеру и видеть, что происходит с автомобилем на подъёмнике.</p>
-          <p>Мы не навязываем допуслуги. Если диагностика показала что-то дополнительное — сообщаем и обсуждаем, а не вписываем в счёт по умолчанию.</p>
-        </div>
-        <div class="about-visual reveal">
-          <div class="about-map-line">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Невский район, Санкт-Петербург</span>
-          </div>
-          <div class="about-map-line">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M5 11l1.5-5h11L19 11"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/></svg>
-            <span>Рядом: <b>метро Дыбенко</b></span>
-          </div>
-          <div class="about-map-line">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M5 11l1.5-5h11L19 11"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/></svg>
-            <span>Рядом: <b>метро Большевиков</b></span>
-          </div>
-          <div class="about-map-line">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M5 11l1.5-5h11L19 11"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/></svg>
-            <span>Рядом: <b>Дальневосточный пр-т</b></span>
-          </div>
-          <div class="hairline"></div>
-          <a class="btn btn-primary" href="tel:88124906730" style="align-self:flex-start;">Позвонить сейчас</a>
-        </div>
+<section class="about" id="about">
+  <div class="wrap about-inner">
+    <div class="reveal">
+      <div class="label mono">[07] О КОМПАНИИ</div>
+      <h2>Ремзона - автосервис в Невском районе</h2>
+      <p>Работаем на ул. Тельмана, рядом с Дыбенко, Большевиков и Дальневосточным проспектом. Занимаемся ремонтом легковых автомобилей любой сложности: от компьютерной диагностики и замены масла до ремонта двигателя, турбин и рулевых реек.</p>
+      <p>Главный принцип - открытость. Пока машина в ремзоне, клиент может находиться рядом и видеть весь процесс своими глазами, а не со слов приёмщика.</p>
+      <div class="about-tags">
+        <span>ул. Тельмана, д.27</span>
+        <span>Невский район СПб</span>
+        <span>vk.com/autonevsky</span>
       </div>
     </div>
-  </section>
+    <div class="about-visual reveal">
+      <svg viewBox="0 0 200 160" fill="none" stroke-width="1.5">
+        <rect x="20" y="60" width="160" height="70" rx="6"/>
+        <path d="M20 90h160"/>
+        <circle cx="60" cy="130" r="14"/>
+        <circle cx="140" cy="130" r="14"/>
+        <path d="M40 60l20-30h80l20 30"/>
+        <path d="M90 30v-14M110 30v-14"/>
+        <path d="M20 105h20M160 105h20"/>
+      </svg>
+    </div>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section class="section faq-section" id="faq">
-    <div class="wrap">
-      <div class="label">[07] ВОПРОСЫ</div>
-      <div class="section-head">
-        <h2 class="reveal">Отвечаем заранее</h2>
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="label mono">[08] ВОПРОСЫ</div>
+      <h2>Отвечаем до того, как вы спросите</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Можно ли находиться рядом с машиной во время ремонта? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+        <div class="faq-a"><p>Да, это принцип нашей работы. В ремзоне свободный доступ - вы можете стоять рядом, смотреть на подъёмник и задавать вопросы механику напрямую.</p></div>
       </div>
-      <div class="faq-list">
-        <div class="faq-item reveal">
-          <div class="faq-q">Можно ли находиться рядом во время ремонта?<span class="plus"></span></div>
-          <div class="faq-a"><p>Да, это принцип работы «Ремзоны» — свободный доступ в зону ремонта. Вы можете стоять рядом с подъёмником и видеть весь процесс.</p></div>
-        </div>
-        <div class="faq-item reveal">
-          <div class="faq-q">Работаете с иномарками и отечественными авто?<span class="plus"></span></div>
-          <div class="faq-a"><p>Да, у нас в наличии запчасти для иномарок и для отечественных автомобилей — не нужно ждать заказ по несколько дней.</p></div>
-        </div>
-        <div class="faq-item reveal">
-          <div class="faq-q">Что если во время диагностики найдёте что-то ещё?<span class="plus"></span></div>
-          <div class="faq-a"><p>Мы сообщаем о находке и называем стоимость до того, как начинаем работу — доп.услуги не добавляются в чек без вашего согласия.</p></div>
-        </div>
-        <div class="faq-item reveal">
-          <div class="faq-q">Берётесь за сложный ремонт — турбины, рейки, инжектор?<span class="plus"></span></div>
-          <div class="faq-a"><p>Да, это отдельные направления нашей работы: ремонт турбин, рулевых реек и инжекторов — вместе с базовыми услугами вроде замены масла и шиномонтажа.</p></div>
-        </div>
-        <div class="faq-item reveal">
-          <div class="faq-q">Как вас найти?<span class="plus"></span></div>
-          <div class="faq-a"><p>Невский район Санкт-Петербурга, рядом с метро Дыбенко, Большевиков и Дальневосточным проспектом. Точный маршрут подскажем по телефону.</p></div>
-        </div>
-        <div class="faq-item reveal">
-          <div class="faq-q">Как записаться на диагностику или ремонт?<span class="plus"></span></div>
-          <div class="faq-a"><p>Достаточно позвонить: <a href="tel:88124906730" style="color:var(--accent-2);">8 (812) 490-67-30</a>. Опишете проблему — предложим удобное время.</p></div>
-        </div>
+      <div class="faq-item">
+        <div class="faq-q">Как вы называете стоимость ремонта? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+        <div class="faq-a"><p>После диагностики называем реальную проблему и её стоимость до начала работ. Дополнительные услуги не предлагаем и не включаем в чек без согласования.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Как добраться до автосервиса? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+        <div class="faq-a"><p>Сервис находится на ул. Тельмана, д.27, рядом со станциями метро Дыбенко, Большевиков и Дальневосточным проспектом - добраться легко на машине или общественном транспорте.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Работаете с иномарками и отечественными авто? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+        <div class="faq-a"><p>Да, ремонтируем и те, и другие, и держим запчасти как для иномарок, так и для отечественных моделей.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Можно приехать только на шиномонтаж или замену масла? <faq-q></faq-q><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+        <div class="faq-a"><p>Конечно, работаем и с небольшими задачами - шиномонтаж, замена масла, автохимия, замена аккумулятора - без привязки к крупному ремонту.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Как записаться на ремонт? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+        <div class="faq-a"><p>Проще всего позвонить по телефону 8 (812) 490-67-30, описать проблему - подскажем время и что взять с собой.</p></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FINAL CTA -->
-  <section class="final-cta" id="contact">
-    <div class="wrap">
-      <div class="label" style="justify-content:center;">[08] СВЯЗЬ</div>
-      <h2 class="reveal">Позвоните — обсудим ремонт без лишних слов</h2>
-      <p class="reveal">Расскажем, что нужно проверить, и предложим время визита в Невском районе.</p>
-      <div class="final-actions reveal">
-        <a class="final-phone" href="tel:88124906730">8 (812) 490-67-30</a>
-        <a class="btn btn-primary" href="tel:88124906730">Позвонить сейчас</a>
-      </div>
+<section class="cta-final">
+  <div class="wrap reveal">
+    <div class="label mono" style="justify-content:center;">[09] ГОТОВЫ ПОМОЧЬ</div>
+    <h2>Позвоните - и приезжайте, когда удобно</h2>
+    <p class="sub" style="margin-left:auto;margin-right:auto;text-align:center;">Расскажем, что нужно взять с собой, и подскажем свободное время. Диагностика при вас, стоимость - до начала работ.</p>
+    <div class="cta-actions">
+      <a href="tel:88124906730" class="btn btn-primary">Позвонить: 8 (812) 490-67-30</a>
+      <a href="https://vk.com/autonevsky" target="_blank" rel="noopener" class="btn btn-ghost">写 Написать в VK</a>
     </div>
-  </section>
+    <p class="cta-addr">ул. Тельмана, д.27 - рядом с Дыбенко, Большевиков и Дальневосточным проспектом, Невский район, Санкт-Петербург</p>
+  </div>
+</section>
 
 </main>
 
 <footer>
   <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>Ремзона</h4>
-        <p style="color:var(--muted);max-width:340px;">Автосервис в Невском районе Санкт-Петербурга. Свободный доступ в ремзону, без навязанных допуслуг.</p>
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="margin-bottom:14px;">Рем<span>зона</span></div>
+        <p>Автосервис в Невском районе Санкт-Петербурга. Ремонт легковых автомобилей любой сложности, свободный доступ в ремзону, без навязанных услуг.</p>
       </div>
-      <div class="footer-col">
+      <div>
         <h4>Контакты</h4>
         <a href="tel:88124906730">8 (812) 490-67-30</a>
-        <p style="color:var(--muted);">Санкт-Петербург, Невский район</p>
-        <p style="color:var(--muted);">Рядом: Дыбенко, Большевиков, Дальневосточный пр-т</p>
+        <a href="https://vk.com/autonevsky" target="_blank" rel="noopener">vk.com/autonevsky</a>
+        <p>ул. Тельмана, д.27</p>
       </div>
-      <div class="footer-col">
-        <h4>Ссылки</h4>
-        <a href="http://auto-nevsky.ru" target="_blank" rel="noopener">auto-nevsky.ru</a>
-        <a href="https://vk.com/autonevsky" target="_blank" rel="noopener">ВКонтакте</a>
+      <div>
+        <h4>Навигация</h4>
+        <a href="#services">Услуги</a>
+        <a href="#why">Преимущества</a>
+        <a href="#testi">Отзывы</a>
+        <a href="#faq">Вопросы</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© <span id="year"></span> Ремзона. Все права защищены.</span>
-      <span>Санкт-Петербург, Невский район</span>
+    <div class="foot-bottom">
+      <span>© 2025 Ремзона. Невский район, Санкт-Петербург</span>
+      <span>Рядом с Дыбенко, Большевиков и Дальневосточным проспектом</span>
     </div>
   </div>
 </footer>
 
-<a class="sticky-call" href="tel:88124906730">
+<a href="tel:88124906730" class="mobile-call">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
   Позвонить: 8 (812) 490-67-30
 </a>
 
 <script>
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// header scroll state
-const header = document.getElementById('siteHeader');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 30) header.classList.add('scrolled');
-  else header.classList.remove('scrolled');
-});
-
-// mobile nav
-const burger = document.getElementById('burgerBtn');
-const mobileNav = document.getElementById('mobileNav');
-const mobileClose = document.getElementById('mobileClose');
-burger.addEventListener('click', () => mobileNav.classList.add('open'));
-mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
-mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
-
-// smooth anchor scroll with header offset
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', function(e){
-    const id = this.getAttribute('href');
-    if(id.length < 2) return;
-    const target = document.querySelector(id);
-    if(target){
-      e.preventDefault();
-      const offset = 80;
-      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({top, behavior: 'smooth'});
-    }
-  });
-});
-
-// reveal on scroll
-const revealEls = document.querySelectorAll('.reveal');
+// Reveal animations
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (!reduceMotion && 'IntersectionObserver' in window) {
-  const groups = {};
-  revealEls.forEach(el => {
-    const parent = el.closest('.pains-grid, .services-grid, .adv-grid, .why-list, .process-list, .reviews-grid, .faq-list') || el.parentElement;
-    if(!groups[parent]) groups[parent] = [];
-    groups[parent].push(el);
-  });
-  Object.values(groups).forEach(list => {
-    list.forEach((el, i) => { el.style.transitionDelay = (i * 0.08) + 's'; });
-  });
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
+const revealEls = document.querySelectorAll('.reveal');
+if(reduceMotion){
+  revealEls.forEach(el=>el.classList.add('in'));
+}else{
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
         entry.target.classList.add('in');
-        observer.unobserve(entry.target);
+        io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
-  revealEls.forEach(el => observer.observe(el));
-} else {
-  revealEls.forEach(el => el.classList.add('in'));
+  },{threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
 }
 
-// counter-up
-const counters = document.querySelectorAll('[data-count]');
-let countersStarted = false;
-function animateCounters(){
-  if (countersStarted) return;
-  countersStarted = true;
-  counters.forEach(el => {
-    const target = parseInt(el.getAttribute('data-count'), 10);
-    const duration = 1200;
-    const start = performance.now();
-    function tick(now){
-      const progress = Math.min((now - start) / duration, 1);
-      const value = Math.floor(progress * target);
-      el.textContent = value;
-      if (progress < 1) requestAnimationFrame(tick);
-      else el.textContent = target;
+// Counter-up
+const counters = document.querySelectorAll('.stat-num');
+const counterIO = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-count'),10);
+      const suffix = el.getAttribute('data-suffix') || '';
+      if(reduceMotion){ el.textContent = target + suffix; counterIO.unobserve(el); return; }
+      let current = 0;
+      const duration = 1200;
+      const start = performance.now();
+      function step(ts){
+        const progress = Math.min((ts-start)/duration,1);
+        current = Math.floor(progress * target);
+        el.textContent = current + suffix;
+        if(progress < 1){ requestAnimationFrame(step); } else { el.textContent = target + suffix; }
+      }
+      requestAnimationFrame(step);
+      counterIO.unobserve(el);
     }
-    requestAnimationFrame(tick);
   });
-}
-if ('IntersectionObserver' in window) {
-  const advSection = document.querySelector('.adv-grid');
-  if (advSection) {
-    const advObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounters();
-          advObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.3 });
-    advObserver.observe(advSection);
-  }
-} else {
-  animateCounters();
-}
+},{threshold:0.4});
+counters.forEach(c=>counterIO.observe(c));
 
 // FAQ accordion
-document.querySelectorAll('.faq-item').forEach(item => {
+document.querySelectorAll('.faq-item').forEach(item=>{
   const q = item.querySelector('.faq-q');
   const a = item.querySelector('.faq-a');
-  q.addEventListener('click', () => {
+  q.addEventListener('click',()=>{
     const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(other => {
-      if (other !== item) {
-        other.classList.remove('open');
-        other.querySelector('.faq-a').style.maxHeight = null;
-      }
+    document.querySelectorAll('.faq-item.open').forEach(other=>{
+      if(other!==item){ other.classList.remove('open'); other.querySelector('.faq-a').style.maxHeight = null; }
     });
-    if (isOpen) {
+    if(isOpen){
       item.classList.remove('open');
       a.style.maxHeight = null;
-    } else {
+    }else{
       item.classList.add('open');
       a.style.maxHeight = a.scrollHeight + 'px';
     }
   });
 });
-</script>
 
+// Mobile nav
+const burger = document.getElementById('burgerBtn');
+const mobileNav = document.getElementById('mobileNav');
+const overlay = document.getElementById('overlay');
+function closeNav(){ mobileNav.classList.remove('open'); overlay.classList.remove('open'); }
+burger.addEventListener('click',()=>{
+  mobileNav.classList.toggle('open');
+  overlay.classList.toggle('open');
+});
+overlay.addEventListener('click', closeNav);
+document.querySelectorAll('.mobile-nav a').forEach(a=>a.addEventListener('click', closeNav));
+
+// Smooth scroll for anchors
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',(e)=>{
+    const href = a.getAttribute('href');
+    if(href.length>1){
+      const target = document.querySelector(href);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'start'});
+      }
+    }
+  });
+});
+</script>
 </body>
 </html>
